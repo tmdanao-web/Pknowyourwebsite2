@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7972235990531363"
+     crossorigin="anonymous"></script>
+  <title>Pknow Your Memes</title>
+  <meta name="description" content="Pknow Your Memes — Filipino Memes Collection" />
+  <style>
+    
+  :root {
+    --background: url("image/palaw.jpg") no-repeat center/cover fixed;
+    --card: #ffffff;
+    --accent: #123f72;
+    --muted: #403c3c;
+    --maxw: 1100px;
+    --radius: 10px;
+    --text: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: var(--background);
+    text-align: center;
+  }
+
+  /* Dark mode: solid background color */
+  :root.dark {
+    --background: #000 !important; /* solid color, overrides image */
+    --card: #3c4658;
+    --accent: #34588d;
+    --muted: #fafafa;
+    --maxw: 1100px;
+    --text: #ffffff;
+    --muted-contrast: #dfeaf7;
+  }
+
+  :root.dark body {
+    background: var(--background);
+    text-align: center;
+
+  
+        }
+    html,body{height:100%;margin:0;background:var(--background);color:var(--text)}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding=18px}
+    header{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.logo{
+  width: 100%;
+  height: auto;
+  max-width: 780px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: -70px;
+  margin-top: -15px;
+}
+
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+    .controls{display:flex;gap:opx;align-items:center;margin:18px 2px}
+    /* Center the search bar */
+    .controls{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 8px;
+      margin:18px 2px;
+    }
+    input[type="search"]{
+      display: block;
+      width: 100%;
+      max-width: 750px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-bottom: -20px !important;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 8px 0;
+    }
+
+    /* Filters (placed under controls) */
+    #filters {
+      margin: 12px 150px;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-bottom: 50px !important;
+
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .filter-label {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 6px 12px;
+      background: #eaf1ff;
+      color: var(--accent);
+      border: 1px solid #d0dcff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.15s;
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    /* Normal (light mode) */
+#darkToggle {
+  padding: 6px 10px;
+  margin-top: 23px;
+      background: #eaf1ff;
+      color: var(--accent);
+      border: 1px solid #d0dcff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.15s;
+}
+
+.disclaimer {
+  margin: 35px 0 2px 0;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+
+.clear-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* tight spacing */
+}
+
+.clear-note {
+  margin: -15px 0 0 0;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.8;
+  position: left
+}
+
+/* Dark mode adjustment */
+:root.dark .clear-note {
+  color: var(--muted-contrast, #aaa);
+}
+
+
+/* Dark mode appearance */
+:root.dark #darkToggle {
+  padding: 6px 10px;
+      background: #eaf1ff;
+      color: var(--accent);
+      border: 1px solid #d0dcff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.15s;
+}    
+
+/* === CLEAR FILTERS BUTTON === */
+.clear-btn {
+  padding: 8px 12px;
+  background: #ffecec;
+  color: #b40000;
+  border: 1px solid #ffb3b3;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.15s;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Hover */
+.clear-btn:hover {
+  background: #ffdddd;
+  border-color: #ff9999;
+}
+
+/* Dark mode */
+:root.dark .clear-btn {
+  background: #4a2a2a;
+  color: #ffbfbf;
+  border: 1px solid #6b3a3a;
+}
+
+:root.dark .clear-btn:hover {
+  background: #5a3232;
+  border-color: #804242;
+}
+ .grid{
+      display: grid;
+      gap: 14px;
+      align-items: start;
+      justify-content: center;
+      grid-template-columns: repeat(4, 260px);
+      grid-auto-rows: max-content;
+    }
+    @media (max-width:1200px){ .grid{grid-template-columns: repeat(3, 260px);} }
+    @media (max-width:900px){ .grid{grid-template-columns: repeat(2, 260px);} }
+    @media (max-width:600px){ .grid{grid-template-columns: 260px;} }
+
+    .card{background:rgba(108, 139, 157, 0.515);   outline: 2px solid rgba(0,0,0,0.2);   /* Add outline */
+border-radius:var(--radius);padding:12px;border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+    .thumb{ width: auto; height: 175px; object-fit:scale-down;   outline: 2px solid rgba(0,0,0,0.2);   /* Add outline */
+ border: 3px solid rgba(0,0,0,0.08);
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(255, 253, 253, 0.242);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);;
+  }
+    .meta{display:flex;justify-content:space-between;align-items:center}
+    .title{font-weight:700}
+    .origin{font-size:12px;color:var(--muted)}
+    .tag{font-size:11px;padding:6px 8px;border-radius:7px;background:#f2f7ff;color:var(--accent)}
+    .link-btn{display:inline-block;margin-top:8px;padding:6px 8px;border-radius:7px;background:#f2f7ff;color:var(--accent);text-decoration:none;font-size:12px}
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* ===== Clean modal CSS ===== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.48);
+      z-index: 1200;
+    }
+    .modal.open { display:flex; }
+    .modal-card {
+      --modal-width: 820px;
+      --modal-max-width: 420px;
+      --modal-player-height: 250px;
+      width: var(--modal-width);
+      max-width: var(--modal-max-width);
+      max-height: 94vh;
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--text);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 30;
+      border: none; background: transparent;
+      font-size: 18px; cursor: pointer;
+      padding: 6px;
+    }
+    .modal-head {
+      padding: 18px 20px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .modal-head h2 { margin:0; font-size:20px; }
+    .modal-links-row { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+    .modal-body {
+      padding: 12px 20px 6px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: calc(88vh - 180px);
+    }
+    .modal-desc { color:#222; font-size: 16px; line-height:1.45; }
+    .video-area { display: flex; flex-direction: column; gap: 10px; align-items: center; width:auto%;}
+    .video-tabs { display:flex; gap:8px; flex-wrap:wrap; width:auto%; justify-content:flex-start; }
+    .video-tabs button { padding:8px 10px; border-radius:8px; background:#222; color:#fff; border:none; cursor:pointer; font-weight:600; }
+    .video-tabs button.active { background:var(--accent); color:#fff; }
+    .video-player-wrap { width: 100%; display:flex; justify-content:center; }
+    .video-player-wrap iframe,
+    .video-player-wrap video,
+    .video-player-wrap .embed-photo {
+      width: 100%;
+      max-width: calc(var(--modal-width) - 40px);
+      height: var(--modal-player-height);
+      border-radius: 10px;
+      border: none;
+      display:block;
+      box-sizing: border-box;
+    }
+    .modal-card.portrait {
+      --modal-width: 420px;
+      --modal-player-height: 700px;
+      max-width: 92vw;
+    }
+    .modal-card.landscape {
+      --modal-width: 820px;
+      --modal-player-height: 420px;
+      max-width: 95vw;
+    }
+    .modal-actions {
+      display:flex;
+      gap:12px;
+      padding: 12px 16px;
+      align-items:center;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    }
+    .vote-box { display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px; background:#d6d6d6; border:1px solid rgba(77, 62, 62, 0.377); right: 90px;}
+    .vote-box .score { min-width:26px; text-align:center; font-weight:600; color:var(--accent); }
+
+    @media (max-width:780px) {
+      .modal-card { width: calc(100vw - 28px); max-height: 94vh; }
+      .modal-card.portrait { --modal-player-height: 66vh; }
+      .video-player-wrap iframe { max-width: 100%; }
+    }
+
+    /* ===== VOTE GLOWS & PORTRAIT LAYOUT (user-provided) ===== */
+    .vote-box button:first-child:hover {
+      transform: scale(1.12);
+      filter: brightness(1.2);
+      box-shadow: 0 0 12px rgba(5, 148, 29, 0.9); /* GREEN glow */
+    }
+
+    .modal-content.has-portrait-video,
+    .modal-card.has-portrait-video {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-content.has-portrait-video .vote-box,
+    .modal-card.has-portrait-video .vote-box {
+      margin-top: auto;  /* pushes it to the bottom */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* ===== DOWNVOTE (last button) ===== */
+    .vote-box button:last-child:hover {
+      transform: scale(1.12);
+      filter: brightness(1.2);
+      box-shadow: 0 0 12px rgba(255, 60, 60, 0.9); /* RED glow */
+    }
+
+    /* ===== CLICK / PRESS GLOWS ===== */
+    .vote-box button:first-child.pressed {
+      box-shadow: 0 0 16px rgba(5, 148, 29, 0.9);
+    }
+
+    .vote-box button:last-child.pressed {
+      box-shadow: 0 0 16px rgba(255, 60, 60, 1);
+    }
+
+   /* === MOBILE FULL-WIDTH MODAL FIX === */ 
+@media (max-width: 780px){
+
+  /* Modal fills ~90% of screen width */
+  .modal-card{
+    width: 150vw;
+    max-width: 200vw;
+  }
+
+  .modal-card.landscape{
+    width: 94vw;
+  }
+
+  .modal-card.portrait{
+    width: 125vw;
+  }
+
+  /* Video always fills modal width */
+  .video-player-wrap iframe,
+  .video-player-wrap video{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Landscape gets 60%+ screen height */
+  .modal-card.landscape
+  .video-player-wrap iframe,
+  .modal-card.landscape
+  .video-player-wrap video{
+    height: 100vh;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Portrait becomes tall immersive */
+  .modal-card.portrait
+  .video-player-wrap iframe,
+  .modal-card.portrait
+  .video-player-wrap video{
+    height: 130vh;
+    aspect-ratio: 9 / 16;
+  }
+
+  /* Keep spacing tight */
+  .modal-body{
+    padding: 8px 14px;
+  
+}
+    }
+  </style>
+<!doctype html>
+<html lang="en">
+<head> 
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pknow Your Memes</title>
+<style>
+/* === NEW: Collapsible Filter Sections === */
+.filter-collapse-btn{
+  padding:8px 12px; background:#eaf1ff; border:1px solid #d0dcff;
+  border-radius:8px; cursor:pointer; font-size:13px; color:var(--accent);
+  width:140px; text-align:left; display:flex; justify-content:space-between;
+}
+.filter-section{ display:none; margin-top:10px; }
+.filter-section.open{ display:block; }
+
+
+/* === Move video tabs under modal header === */
+.video-tabs-fixed{
+  display:flex; gap:8px; flex-wrap:wrap; width:100%; padding:10px 20px;
+  border-bottom:1px solid rgba(0,0,0,0.1);
+  background:var(--card); position:sticky; top:0; z-index:20;
+}
+.video-tabs-fixed button{
+  padding:6px 10px; border-radius:8px; background:#222; color:#fff;
+  border:none; cursor:pointer; font-weight:600;
+}
+.video-tabs-fixed button.active{ background:var(--accent); }
+
+/* === SHUFFLE BUTTON === */
+    .shuffle-btn {
+      padding: 8px 12px;
+      background: #eaf1ff;
+      color: var(--accent);
+      border: 1px solid #d0dcff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.15s;
+  font-family: Arial, Helvetica, sans-serif;
+
+    }
+    .shuffle-btn:hover {
+      background: #d0dcff;
+      transform: scale(1.05);
+    }
+    .shuffle-btn:active {
+      transform: scale(0.95) rotate(180deg);
+    }
+
+    /* Specific instance overrides */
+    #shuffleBtn {
+      background: #b2d2b2;
+      color: #035403;
+      border: 1px solid #5b8d5b;
+    }
+    #shuffleBtn:hover {
+      background: #abebab;
+      border-color: #144114;
+    }
+
+/* Left-align card content; body remains centered for header */
+.grid, .card { text-align: left; }
+
+/* Fix meta row alignment */
+.card .meta { display:flex; justify-content: space-between; align-items: flex-start; }
+
+/* Ensure title and origin never center */
+.card .title,
+.card .origin { text-align: left; }
+
+/* Prevent card from elongating with long text */
+.card .title{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;              /* clamp to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.25;
+  max-height: calc(1.25em * 2);
+}
+.card .origin{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;                 /* single-line with ellipsis */
+}
+
+/* Reserve consistent space for title+origin block */
+.card .meta{
+  min-height: 46px;                    /* adjust if fonts change */
+}
+
+/* Overlay tint when modal is open */
+.modal {
+  background: rgba(0,0,0,0.48); /* change color/opacity here */
+}
+/* Modal panel color */
+:root{
+  --card: #ffffff;      /* light mode modal background */
+}
+:root.dark{
+  --card: #0e1624;      /* dark mode modal background */
+}
+/* Or force a specific panel color */
+.modal-card{ background: var(--card); } /* replace with a hex if you prefer */
+</style>
+</head>
+<body>
+  <div class="fixed-canvas">
+<div class="wrap" id="app">
+  <header>
+    <img src="image/memeslogo.svg" class="logo" />
+  </header>
+  <p> </p>
+  <p class="disclaimer">
+  Disclaimer: some data may not be 100% accurate and I would appreciate it if you give me insights. <br> Email me at tmdanao@up.edu.ph
+</p>
+<div class="controls">
+<input id="q" type="search" placeholder="Search memes..." aria-label="Search memes" />
+<button id="darkToggle" class="year-btn" aria-pressed="false" title="Toggle dark mode">Dark</button>
+</div>
+  <div id="filters">
+    <button class="filter-collapse-btn" data-target="#yearSection">Year ▼</button>
+<button class="filter-collapse-btn" data-target="#tagSection">Tag ▼</button>
+  <button id="clearFilters" class="clear-btn">Clear</button>
+  <button id="shuffleBtn" class="shuffle-btn">Shuffle</button>
+
+
+<div id="yearSection" class="filter-section">
+  <div id="yearFilters" class="filter-buttons"></div>
+</div>
+
+    <div id="tagSection" class="filter-section">
+      <div id="tagFilters" class="filter-buttons"></div>
+    </div>
+  </div>
+
+  <main>
+    <section id="timeline" class="grid"></section>
+  </main>
+<main>
+      <section id="timeline" class="grid" aria-live="polite"></section>
+
+      <footer>
+        <p>Report dead links or suggest memes to add</p>         
+      </footer>
+
+<!-- UPDATED MODAL WITH FIXED VIDEO TABS UNDER HEADER -->
+<div id="modal" class="modal">
+  <div class="modal-card landscape">
+    <button id="modalClose" class="modal-close">✕</button>
+
+    <header class="modal-head">
+      <h2 id="mTitle"></h2>
+      <div id="mOrigin" class="meta-row"></div>
+      <div id="mLinks" class="modal-links-row"></div>
+    </header>
+
+    <!-- FIXED TABS HERE -->
+    <div id="videoTabs" class="video-tabs-fixed"></div>
+
+    <div class="modal-body">
+      <div id="mDesc" class="modal-desc"></div>
+      <div id="videoPlayerWrap" class="video-player-wrap"></div>
+    </div>
+
+    <footer class="modal-actions">
+      <div class="vote-box" id="modalVoteBox" data-id="">
+        <button onclick="vote(this,1)">:)</button>
+        <span class="score">0</span>
+        <button onclick="vote(this,-1)">:(</button>
+      </div>
+
+      
+      
+        </footer>
+  </div>
+</div>
+
+<script>
+/* ==== Collapsible Filter Toggle ==== */
+document.querySelectorAll('.filter-collapse-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sec = document.querySelector(btn.dataset.target);
+    sec.classList.toggle('open');
+  });
+});
+
+/* ==== Move video tabs under header (modify buildTabsAndPlayer) ==== */
+function buildTabsAndPlayer(m, links){
+  const tabs = document.getElementById('videoTabs');
+  const player = document.getElementById('videoPlayerWrap');
+  tabs.innerHTML = '';
+  player.innerHTML = '';
+
+  links.forEach((link,idx)=>{
+    const b=document.createElement('button');
+    b.textContent='Video '+(idx+1);
+    if(idx===0) b.classList.add('active');
+    b.onclick=()=>{
+      tabs.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      loadEmbed(link);
+    };
+    tabs.appendChild(b);
+  });
+  loadEmbed(links[0]);
+}
+</script>
+</div>
+
+</body>
+</html>
+
+  <!-- END: Clean Modal -->
+
+  <!-- Firebase (keeps your existing vote behavior working) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    import { getFirestore, doc, setDoc, updateDoc, onSnapshot, increment, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAweWQoux3ukKP2QxuRM81ObYcnX4wVQtc",
+      authDomain: "pknowyourmemes-3b18a.firebaseapp.com",
+      projectId: "pknowyourmemes-3b18a",
+      storageBucket: "pknowyourmemes-3b18a.firebasestorage.app",
+      messagingSenderId: "249296416918",
+      appId: "1:249296416918:web:d4c0f67955450a3c0c12b7",
+      measurementId: "G-JDB0EFZ01G"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // vote function (same idea as your original)
+    window.vote = async function(btn, value) {
+      const box = btn.closest('.vote-box');
+      if (!box) return;
+      const id = box.dataset.id;
+      if (!id) return;
+      try { btn.classList.add('pressed'); } catch(e){}
+      const ref = doc(db, "votes", id);
+      try {
+        const snap = await getDoc(ref);
+        if (!snap.exists()) await setDoc(ref, { score: 0 });
+        await updateDoc(ref, { score: increment(value) });
+      } catch (err) {
+        console.error('vote error', err);
+      } finally {
+        setTimeout(()=>{ try{ btn.classList.remove('pressed'); }catch(e){} }, 350);
+      }
+    };
+    // attachVoteListener (keeps score updated inside modal)
+    let unsubscribeModalVote = null;
+    window.attachVoteListener = async function(voteBox) {
+      if (!voteBox) return;
+      const id = voteBox.dataset.id;
+      if (!id) return;
+      const ref = doc(db, "votes", id);
+      const scoreEl = voteBox.querySelector('.score');
+      if (unsubscribeModalVote) { unsubscribeModalVote(); unsubscribeModalVote = null; }
+      try {
+        const snap = await getDoc(ref);
+        if (scoreEl) scoreEl.textContent = snap.exists() ? snap.data().score : 0;
+      } catch(e){ if(scoreEl) scoreEl.textContent = 0; }
+      unsubscribeModalVote = onSnapshot(ref, snap => {
+        if (scoreEl) scoreEl.textContent = snap.exists() ? snap.data().score : 0;
+      });
+    };
+  </script>
+
+  <script>
+    // ====== Data (sample from your list) ======
+    const MEMES = [
+      { title: 'I love you virus', year: 2000, image: './image/iloveyou.jpg', link: 'https://www.youtube.com/embed/tHUi04CwSFk', news: 'https://www.bbc.com/news/technology-52458765', origin: 'Onel de Guzman', description: 'A major player for Filipino internet presence', tags:['news','criminal'] },
+    
+{
+    title: 'Kapeng matapang',
+    year: 2019,
+    image: './image/Kapengmatapang.jpg',
+    link: 'https://www.facebook.com/reel/1383634471776415',
+    profile: 'https://www.facebook.com/reniebhoycjovellanos.jovellanos',
+    origin: 'Renie Bhoy Jovellano',
+    description: 'Pabili nga po Kapeng Matapang, kapeng matapang, na kaya kang ipaglaban. Aeouaueoueu',
+    tags: ['viral', 'urban legend'],
+  },
+
+{
+  title: 'White Sando Girl',
+  year: 2014,
+  image: './image/sando.jpg',
+  link: 'https://youtu.be/iDGhJoYdOEw?si=rKBKcFO1ahfYG4me',
+  origin: '@norieee095',
+  profile: 'https://www.tiktok.com/@norieee095?_r=1&_t=ZS-91RB25bhKxU',
+  description: 'Im not sure kung sya yang nasa profile link, pero kamukha nya naman talaga',
+  tags: ['classical', 'ancient', 'dance'],
+  styles:{ modal:{ width:'460px', playerHeight:'720px' } }
+},
+
+{
+  title: 'Ms. Nene',
+  year: 2010,
+  image: './image/nene.jpg',
+  link: 'https://www.facebook.com/watch/?extid=CL-UNK-UNK-UNK-IOS_GK0T-GK1C&v=888953397794659',
+  origin: 'Mariel Anne Villegas',
+  news: 'https://m.facebook.com/story.php?story_fbid=pfbid0nEZm9UWbbXe5wPoZgdEF6dzrwMKG5MqFDh89ZnZTkwLQCAhHKNiCaLDjaWpA3ec5l&id=100063552917656',
+  more2: 'https://www.tiktok.com/@maiku_ft/video/7122822108907851034?_r=1&_t=ZS-91RbyWYrwHI',
+  profile: '',
+  description: 'Click Source link instead for I cannot embed the video because of facebook embedding issues',
+  tags: ['ancient', 'classical',]
+},
+
+{
+    title: 'Hangang Leeg',
+    year: 2019,
+    image: './image/arlene.jpg',
+    link: 'https://youtu.be/0zieYY3eBqs?si=Hg0fig0lbxS8j5yN',
+    more1: 'https://youtu.be/VjMJHJKwvVE?si=zVNTs08wG-00Nsjk',
+    profile: 'https://www.youtube.com/@kweenarlenesabandalofficia2628',
+    origin: 'Arlene Sabandal',
+    description: '',
+    tags: ['mythology'],
+    styles:{ modal:{ width:'460px', playerHeight:'720px' } }
+  },
+
+{
+  title:'Binangkal na ta Bai',
+  year:2019,
+  image:'./image/binangkal.png',
+  link:'https://www.youtube.com/watch?v=M0ESxFuXexY',
+  more1: 'https://www.youtube.com/watch?v=VsU57j3L9Hw',
+  more3: 'https://www.youtube.com/watch?v=MLg7dm0gxug',
+  more4:'https://www.tiktok.com/@ch1k_r00ster/video/7544254421371424008?_r=1&_t=ZS-91zg4qUWAIn',
+  more5:'https://www.tiktok.com/@bulk.carrier/video/7005158662444551425?_r=1&_t=ZS-91zgIsrBemT',
+  origin:'Pedro Chavez Mariquit',
+  profile:'https://www.facebook.com/pedro.mariquit.90',
+  description:'Sya ata reason bakit nauso yung Binangkal sa comment section',
+  tags:['song','bisaya','ads', 'rap']
+},
+
+{
+    title: 'Butete',
+    year: 2008,
+    image: './image/butete.png',
+    link: 'https://www.youtube.com/watch?v=iVIS6KIQx78&list=RDiVIS6KIQx78&start_radio=1',
+    more1: 'https://www.youtube.com/watch?v=9erjVo9BSKc&list=RD9erjVo9BSKc&start_radio=1',
+    origin: 'Rack Friends (DJ Oye)',
+    profile: 'https://www.facebook.com/djoye1047/',
+    description: `Grabe among shot-shot
+Ug grabe among hab-hab (among hab-hab)
+Pagka taod-taod murag mi malibat... heyyy
+Wa mi balo (wa mi balo)
+Diay kadto makahilo... low low low...`,
+    tags: ['bisaya', 'song', 'rap', 'parody']
+  },
+
+{
+    title: 'Adobong Menok',
+    year: 2007,
+    image: './image/adobo.jpg',
+    link: 'https://youtu.be/H_UxyQ7cb3I?si=8D0xOr9IMy1cB3XX',
+    origin: 'Travis Craft',
+    profile: 'https://www.youtube.com/@poolboyinla',
+    description: 'dahon ng laurel, angsarap sarap',
+    tags: ['vlog','food']
+  },
+
+ {
+    title: 'Million Fans Around the World, Walang aawat ahh, Uy Bagsak',
+    year: 2018,
+    image: './image/bag.jpg',
+    link: 'https://youtu.be/FtoKADYN-4Y?si=GO9R0HTegRThdeqd',
+    origin: 'unknown',
+    profile: '',
+    description: '',
+    tags: ['sound','mythology']
+  },
+  {
+    title: 'Geh talon una ulo',
+    year: 2016,
+    image: './image/talon.png',
+    link: 'https://youtu.be/fp4A498ujZY?si=NuVTjBMqq8PfbrOr',
+    more1: 'https://youtu.be/j6JKSrq4Lts?si=f4S8K1DV4rUKCIsJ',
+    origin: 'Unknown',
+    profile: '',
+    description: '',
+    tags: ['sound','dark']
+  },
+  {
+    title: 'Dalawang Beses na yan! Gago ka ba?',
+    year: 2017,
+    image: './image/badang.png',
+    link: 'https://youtu.be/1jPeMx0mJeU?si=ttJ_Ik4ONdwabsv3',
+    origin: 'Tito Badang',
+    profile: '',
+    description: '',
+    tags: ['sound','mura','criminal']
+  },
+
+]
+
+    // Helper: escape
+    function escapeHtml(s=''){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+    // Utility: convert to embed URL (basic)
+    function convertToEmbed(url){
+      if(!url) return '';
+      try{
+        if(url.includes('youtube.com')||url.includes('youtu.be')){
+          if(url.includes('embed/')) return url;
+          const u = new URL(url.includes('http')?url:'https://'+url.replace(/^\/\//,''));
+          const params = new URLSearchParams(u.search);
+          const id = u.searchParams.get('v') || u.pathname.split('/').pop();
+          if(id) return 'https://www.youtube.com/embed/' + id + (params.toString()?('?'+params.toString()):'');
+        }
+        if(url.includes('tiktok.com')) {
+          const m = url.match(/video\/(\d+)/);
+          if(m) return 'https://www.tiktok.com/embed/v2/' + m[1] + '?muted=0';
+        }
+        if(url.includes('facebook.com')) return 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url);
+      }catch(e){}
+      return url;
+    }
+
+    // render timeline cards
+    const el = {
+      timeline: document.getElementById('timeline'),
+      q: document.getElementById('q'),
+      modal: document.getElementById('modal'),
+      modalClose: document.getElementById('modalClose'),
+      mTitle: document.getElementById('mTitle'),
+      mOrigin: document.getElementById('mOrigin'),
+      mDesc: document.getElementById('mDesc'),
+      mLinks: document.getElementById('mLinks'),
+      mPlayerWrap: document.getElementById('videoPlayerWrap'),
+      videoTabs: document.getElementById('videoTabs'),
+      modalVoteBox: document.getElementById('modalVoteBox'),
+      modalOpenSource: document.getElementById('modalOpenSource')
+    };
+
+    function createCard(m){
+      const c = document.createElement('article');
+      c.className = 'card';
+      c.tabIndex = 0;
+      const img = document.createElement('img');
+      img.className = 'thumb';
+      img.src = m.image || '';
+      img.alt = m.title || 'thumb';
+      const t = document.createElement('div');
+      const dateStr = m.month ? `${m.month} ${m.year || ''}` : (m.year || '');
+      t.innerHTML = `<div class="meta"><div><div class="title">${escapeHtml(m.title)}</div><div class="origin">${dateStr} · ${escapeHtml(m.origin||'')}</div></div></div>`;
+      // Show full text on hover
+      const titleEl = t.querySelector('.title');
+      if (titleEl) titleEl.title = m.title || '';
+      const originEl = t.querySelector('.origin');
+      if (originEl) originEl.title = (dateStr + (m.origin ? ' · ' + m.origin : '')) || '';
+      c.appendChild(img); c.appendChild(t);
+      c.addEventListener('click', ()=> openModal(m));
+      c.addEventListener('keydown', (e)=> { if(e.key==='Enter') openModal(m); });
+      return c;
+    }
+
+    // filter state
+    let activeYear = null;
+    let activeTag = null;
+
+    // renderTimeline now respects search, year and tag filters
+    function renderTimeline(){
+      const q = el.q.value.trim().toLowerCase();
+      el.timeline.innerHTML = '';
+      const list = MEMES.filter(m=>{
+        if(q){
+          const hay = (m.title + ' ' + (m.origin||'') + ' ' + (m.tags||[]).join(' ') + ' ' + (m.description||'')).toLowerCase();
+          if(!hay.includes(q)) return false;
+        }
+        if(activeYear && String(m.year) !== String(activeYear)) return false;
+        if(activeTag && !(Array.isArray(m.tags) && m.tags.includes(activeTag))) return false;
+        return true;
+      });
+
+      // follow JSON order: do not sort
+      // list.sort((a,b)=>{ /* removed */ });
+
+      if(list.length===0){ el.timeline.innerHTML = '<p class="muted">No memes found.</p>'; return; }
+      list.forEach(m => el.timeline.appendChild(createCard(m)));
+    }
+
+    /* Build filter buttons (years + tags) */
+    function buildFilterButtons(){
+      const years = Array.from(new Set(
+        MEMES.map(m=>Number(m.year)).filter(Number.isFinite)
+      )).sort((a,b)=>a-b);  // ascending
+
+      const tagsSet = new Set(); MEMES.forEach(m => (m.tags||[]).forEach(t=>tagsSet.add(t)));
+      const tags = Array.from(tagsSet).sort((a,b)=>a.localeCompare(b));
+
+      const yearBox = document.getElementById('yearFilters');
+      const tagBox = document.getElementById('tagFilters');
+      if(!yearBox || !tagBox) return;
+      yearBox.innerHTML = '';
+      tagBox.innerHTML = '';
+
+      // "All" year button
+      const allY = document.createElement('button');
+      allY.className = 'filter-btn';
+      allY.textContent = 'All';
+      allY.addEventListener('click', ()=>{
+        activeYear = null;
+        document.querySelectorAll('#yearFilters .filter-btn').forEach(b=>b.classList.remove('active'));
+        allY.classList.add('active');
+        renderTimeline();
+      });
+      yearBox.appendChild(allY);
+      if(!activeYear) allY.classList.add('active');
+
+      years.forEach(y=>{
+        const b = document.createElement('button');
+        b.className = 'filter-btn';
+        b.textContent = String(y);
+        b.addEventListener('click', ()=> toggleYearFilter(y, b));
+        yearBox.appendChild(b);
+      });
+
+      // Tags
+      const allT = document.createElement('button');
+      allT.className = 'filter-btn';
+      allT.textContent = 'All';
+      allT.addEventListener('click', ()=>{
+        activeTag = null;
+        document.querySelectorAll('#tagFilters .filter-btn').forEach(b=>b.classList.remove('active'));
+        allT.classList.add('active');
+        renderTimeline();
+      });
+      tagBox.appendChild(allT);
+      if(!activeTag) allT.classList.add('active');
+
+      tags.forEach(t=>{
+        const b = document.createElement('button');
+        b.className = 'filter-btn';
+        b.textContent = t.charAt(0).toUpperCase() + t.slice(1); // capitalize label
+        b.addEventListener('click', ()=> toggleTagFilter(t, b)); // use original tag value
+        tagBox.appendChild(b);
+      });
+    }
+
+    function toggleYearFilter(year, btn){
+      if(activeYear === year){
+        activeYear = null;
+        btn.classList.remove('active');
+        // mark "All" active
+        const allBtn = document.querySelector('#yearFilters .filter-btn');
+        if(allBtn) allBtn.classList.add('active');
+      } else {
+        activeYear = year;
+        document.querySelectorAll('#yearFilters .filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      renderTimeline();
+    }
+
+      const darkBtn = document.getElementById('darkToggle');
+   function setDarkMode(enabled){
+     try{
+       if(enabled){
+         document.documentElement.classList.add('dark');
+         localStorage.setItem('pk-dark','1');
+         if(darkBtn){ darkBtn.textContent = 'Light'; darkBtn.setAttribute('aria-pressed','true'); }
+       } else {
+         document.documentElement.classList.remove('dark');
+         localStorage.removeItem('pk-dark');
+         if(darkBtn){ darkBtn.textContent = 'Dark'; darkBtn.setAttribute('aria-pressed','false'); }
+       }
+     }catch(e){}
+   }
+
+    // Load dark mode from localStorage on page load
+    if(localStorage.getItem('pk-dark')){
+      setDarkMode(true);
+    }
+
+    if(darkBtn){
+      darkBtn.addEventListener('click', ()=> setDarkMode(!document.documentElement.classList.contains('dark')));
+    }
+
+    function toggleTagFilter(tag, btn){
+      if(activeTag === tag){
+        activeTag = null;
+        btn.classList.remove('active');
+        const allBtn = document.querySelector('#tagFilters .filter-btn');
+        if(allBtn) allBtn.classList.add('active');
+      } else {
+        activeTag = tag;
+        document.querySelectorAll('#tagFilters .filter-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      renderTimeline();
+    }
+
+    // modal open/close & player
+    function clearModalState(){
+      el.mPlayerWrap.innerHTML = '';
+      el.videoTabs.innerHTML = '';
+      el.mLinks.innerHTML = '';
+      el.modalVoteBox.dataset.id = '';
+      if(window.attachVoteListener) { /*unsubscribe handled inside*/ }
+      el.modal.classList.remove('open');
+      el.modal.setAttribute('aria-hidden','true');
+      const modalCard = document.querySelector('.modal-card');
+      if(modalCard) {
+        modalCard.classList.remove('portrait','landscape');
+        modalCard.style.removeProperty('--modal-width');
+        modalCard.style.removeProperty('--modal-player-height');
+        modalCard.classList.remove('has-portrait-video');
+      }
+    }
+    function closeModal(){ clearModalState(); }
+
+    function isPortraitUrl(url){
+      if(!url) return false;
+      return /tiktok\.com|facebook\.com.*\/reel|shorts\/|\/shorts\//i.test(url);
+    }
+
+    function buildTabsAndPlayer(m, links){
+  el.videoTabs.innerHTML = '';
+  el.mPlayerWrap.innerHTML = '';
+  
+  // Collect all media items (videos + picture)
+  const mediaItems = [];
+  links.forEach((link, idx) => {
+    mediaItems.push({ type: 'video', src: link, label: 'Video ' + (idx+1) });
+  });
+  
+  // Add picture tab if available
+  if(m.picture){
+    mediaItems.push({ type: 'picture', src: m.picture, label: 'Picture' });
+  }
+  
+  if(!mediaItems.length) return;
+  
+  // Set portrait/landscape based on first item
+  const modalCard = document.querySelector('.modal-card');
+  const portrait = mediaItems.some(item => isPortraitUrl(item.src));
+  modalCard.classList.add(portrait? 'portrait':'landscape');
+  modalCard.classList.toggle('has-portrait-video', portrait);
+  
+  // Apply per-meme overrides
+  if(m.styles && m.styles.modal){
+    if(m.styles.modal.width) modalCard.style.setProperty('--modal-width', m.styles.modal.width);
+    if(m.styles.modal.playerHeight) modalCard.style.setProperty('--modal-player-height', m.styles.modal.playerHeight);
+  }
+  
+  // Create tabs for all media items
+  mediaItems.forEach((item, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.textContent = item.label;
+    if(idx===0) btn.classList.add('active');
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#videoTabs .tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      loadEmbed(item.src);
+      const newPortrait = isPortraitUrl(item.src);
+      modalCard.classList.toggle('portrait', newPortrait);
+      modalCard.classList.toggle('landscape', !newPortrait);
+      modalCard.classList.toggle('has-portrait-video', newPortrait);
+    });
+    el.videoTabs.appendChild(btn);
+  });
+  
+  // Load first media item
+  loadEmbed(mediaItems[0].src);
+    }
+
+    function loadEmbed(src){
+      el.mPlayerWrap.innerHTML = '';
+      const embed = convertToEmbed(src) || src;
+      // simple heuristics
+      if(embed.includes('youtube.com/embed') || embed.includes('tiktok.com/embed') || embed.includes('facebook.com/plugins')) {
+        const iframe = document.createElement('iframe');
+        iframe.src = embed;
+        iframe.frameBorder = '0';
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        el.mPlayerWrap.appendChild(iframe);
+      } else if(src && /\.(png|jpg|jpeg|webp|gif)$/.test(src)) {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'embed-photo';
+        el.mPlayerWrap.appendChild(img);
+      } else {
+        const a = document.createElement('a');
+        a.href = src;
+        a.textContent = 'Open video';
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        el.mPlayerWrap.appendChild(a);
+      }
+    }
+
+    async function openModal(m){
+  // set text fields
+  el.mTitle.textContent = m.title || '';
+  const dateStr = m.month ? `${m.month} ${m.year || ''}` : (m.year || '');
+  el.mOrigin.textContent = dateStr + (m.origin? ' · ' + m.origin : '');
+  el.mDesc.textContent = m.description || '';
+  
+  // set links
+  el.mLinks.innerHTML = '';
+  const mainLinks = [];
+  if(m.link) mainLinks.push({href:m.link, text:'Source'});
+  if(m.context) mainLinks.push({href:m.context, text:'Context'});
+  if(m.context2) mainLinks.push({href:m.context, text:'Context'});
+  if(m.news) mainLinks.push({href:m.news, text:'News'});
+  if(m.profile) mainLinks.push({href:m.profile, text:'Profile'});
+  if(m.profile2) mainLinks.push({href:m.profile, text:'Profile'});
+  if(m.reference) mainLinks.push({href:m.reference, text:'Reference'});
+  if(m.reference1) mainLinks.push({href:m.reference1, text:'Reference 1'});
+  if(m.reference2) mainLinks.push({href:m.reference2, text:'Reference 2'});
+  if(m.reference3) mainLinks.push({href:m.reference3, text:'Reference 3'});
+
+  mainLinks.forEach(l=>{
+    const a = document.createElement('a');
+    a.href = l.href; a.target='_blank'; a.rel='noopener noreferrer';
+    a.className = 'link-btn';
+    a.textContent = l.text;
+    el.mLinks.appendChild(a);
+  });
+  
+  // prepare vote box id
+  const verId = 'modal_' + (m.title||'meme').replace(/[^a-z0-9]/ig,'_').toLowerCase() + '_' + (m.year||'0');
+  el.modalVoteBox.dataset.id = verId;
+  if(window.attachVoteListener) attachVoteListener(el.modalVoteBox);
+
+  // gather video links (embedurl, link, video, more1..more9)
+  const links = [];
+  const primary = m.embedurl || m.link || m.video || m.picture;
+  if(primary) links.push(primary);
+  for(let i=1;i<=9;i++){ if(m['more'+i]) links.push(m['more'+i]); }
+  for (let i=1;i<=9;i++){ if(m['picture'+i]) links.push(m['picture'+i]); }
+  // open modal 
+  el.modal.classList.add('open'); el.modal.setAttribute('aria-hidden','false');
+  
+  // build player/tabs
+  if(links.length>1) buildTabsAndPlayer(m, links);
+  else if(links.length===1) buildTabsAndPlayer(m, links);
+  else {
+    // no videos: show image or picture if available
+    if(m.picture){
+      loadEmbed(m.picture);
+    } else if(m.image){
+      loadEmbed(m.image);
+    } else {
+      el.mPlayerWrap.innerHTML = '<p class="muted">No media available</p>';
+    }
+  }
+  // ensure modalOpenSource points to first link or '#'
+  el.modalOpenSource.href = m.link || m.embedurl || '#';
+}
+    // wire modal close interactions
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // search and init
+    document.getElementById('q').addEventListener('input', renderTimeline);
+document.getElementById('clearFilters').addEventListener('click', () => {
+  // Clear search
+  el.q.value = '';
+
+  // Reset filter state
+  activeYear = null;
+  activeTag = null;
+
+  // Rebuild buttons so "All" is highlighted again
+  buildFilterButtons();
+
+  // Re-render timeline
+  renderTimeline();
+});
+
+    // shuffle function
+        function shuffleCards(){
+          const shuffled = [...MEMES].sort(()=> Math.random() - 0.5);
+          el.timeline.innerHTML = '';
+          shuffled.forEach (m   => el.timeline.appendChild(createCard(m)));
+        }
+    
+        document.getElementById('shuffleBtn').addEventListener('click', shuffleCards);
+        // initial render
+        renderTimeline();
+        buildFilterButtons();
+  </script>
+</body>
+</html>
+<style>
+/* === Dark mode background, modal color, font weight fixes === */
+:root{
+  --bg-image: url("image/palaw.jpg") center/cover fixed no-repeat;
+  --background: var(--bg-image);
+  /* Modal colors (same in light/dark) */
+  --modal-bg: #f4f4f4;
+  --modal-text: #0b2a2a;
+}
+:root.dark{
+  /* Solid dark background to avoid conflict with photo */
+  --background: #000;
+  --modal-bg: #354448;
+  --modal-text: #faffff;
+  --modal-font-weight: 400;   /* default modal text weight */
+  --modal-title-weight: 300px;  /* default modal title weight */
+}
+
+/* Apply weights across modal UI */
+.modal-head h2{
+  font-weight: var(--modal-title-weight) !important;
+}
+.modal-desc,
+.modal-links-row,
+.meta-row,
+.video-tabs-fixed button{
+  font-weight: var(--modal-font-weight) !important;
+}
+
+/* Ensure body always uses the variable above */
+body{ background: var(--background) !important; }
+
+/* Force modal panel colors and improve contrast */
+.modal-card,
+.video-tabs-fixed{ background: var(--modal-bg) !important; color: var(--modal-text) !important; }
+.modal-desc, .modal-head, .modal-links-row, .meta-row{ color: var(--modal-text) !important; }
+
+/* Stronger modal title */
+.modal-head h2{ font-weight: 800 !important; }
+
+/* Readable link buttons inside modal */
+.modal-card .link-btn{
+  background: rgba(255,255,255,0.65);
+  color: #0b2a2a;
+  border-color: rgba(0,0,0,0.12);
+}
+</style>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7972235990531363"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>Pinoy Know Your Website</title>
+
+   <style>
+   
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:url("image/philippines.jpg") no-repeat center center fixed;
+    background-size:cover;
+    color:white;
+    text-align:center;
+    position: relative;
+}
+
+.container{
+    padding:40px 24px;
+}
+
+/* AUTHOR SECTION - top right corner */
+.author-inline {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 14px 16px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  max-width: 280px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.author-inline .author-photo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+
+.author-info {
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.author-name {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.author-bio {
+  margin: 4px 0;
+  opacity: 0.9;
+  font-size: 11px;
+}
+
+.author-email {
+  color: #64b5f6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.author-email:hover {
+  color: #90caf9;
+  text-decoration: underline;
+}
+
+/* MAIN LOGO (no frame) */
+.main-logo{
+  display:block;
+  width:100%;
+  max-width: 700px; /* adjust as needed */
+  height:auto;
+  margin: 0 auto; /* center */
+  transition: transform 180ms ease, filter 180ms ease; /* added */
+  will-change: transform, filter; /* added */
+  
+}
+.main-logo:hover,
+.main-logo:focus-visible {
+  transform: scale(1.06) translateY(-2px);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35)) brightness(1.05);
+}
+.main-logo:active { transform: scale(0.98); } /* tap feedback */
+
+@media (prefers-reduced-motion: reduce) {
+  .main-logo { transition: none; }
+}
+
+/* TAGLINE */
+h1{
+    margin-top:22px;
+    max-width:900px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    line-height:1.5;
+    text-shadow: 2px 2px 5px rgba(0,0,0,.7);
+}
+
+/* CARDS LAYOUT */
+.cards{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* CARD STYLE */
+.card{
+    width:320px;
+    height:180px;
+    background:rgba(255,255,255,0.28);
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    /* cursor:pointer;  <-- remove so only link shows pointer */
+    transition:0.3s;
+    text-decoration:none;
+}
+
+/* Make only the inner link clickable */
+.card-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;            /* optional: enlarge click target around logo */
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hover effect only when the link (logo area) is hovered/focused */
+.card:has(.card-link:hover),
+.card:has(.card-link:focus-visible){
+  background:rgba(255,255,255,0.4);
+  transform:scale(1.05);
+}
+
+/* Uniform logo sizes with per-image overrides + offsets */
+.card-img {
+  width: var(--logo-w, 220px);
+  height: var(--logo-h, 120px);
+  max-width: none;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transform: translate(var(--logo-x, 0px), var(--logo-y, 0px));
+}
+
+/* Mobile responsiveness (also overridable per image) */
+@media (max-width: 768px) {
+  .author-inline {
+    max-width: 240px;
+    top: 12px;
+    right: 12px;
+    padding: 10px 12px;
+  }
+  .author-inline .author-photo { width: 40px; height: 40px; }
+  .author-name { font-size: 12px; }
+  .author-bio { font-size: 10px; }
+
+  .card { width: 280px; height: 160px; }
+
+  .card-img {
+    width: var(--logo-w-sm, var(--logo-w, 200px));
+    height: var(--logo-h-sm, var(--logo-h, 110px));
+    transform: translate(
+      var(--logo-x-sm, var(--logo-x, 0px)),
+      var(--logo-y-sm, var(--logo-y, 0px))
+    );
+  }
+}
+   </style>
+
+</head>
+
+<body>
+  <div class="fixed-canvas">
+
+<!-- AUTHOR SECTION - top right corner -->
+<div class="author-inline" aria-labelledby="authorName">
+  <img src="./image/theo.jpg" alt="Theo Jan Joseph" class="author-photo" />
+  <div class="author-info">
+    <div class="author-name" id="authorName">Theo Jan Joseph</div>
+    <p class="author-bio">For Fun and Historical Records Timeline</p>
+    <p class="author-bio">
+      Email: <a href="mailto:tmdanao@up.edu.ph" class="author-email">tmdanao@up.edu.ph</a>
+    </p>
+    <p class="author-bio">
+      <a href="https://linktr.ee/theojan1" class="author-email" target="_blank">LinkTree →</a>
+    </p>
+    <p class="author-bio">
+      <a href="contributors.html" class="author-email">View Contributors →</a>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+
+    <!-- Main Header Logo -->
+<img src="image/logo2.svg" class="main-logo" alt="Website Logo">
+
+  <h1>A collection of everything Pinoy — trivia, culture, history, customs,  
+    and the shared knowledge that defines the    Filipino experience.</h1>
+
+   <div class="cards">
+
+  <div class="card">
+    <a href="Pknowyourmemes.html" class="card-link">
+      <img src="image/memeslogo.svg" class="card-img" alt="Memes"
+           style="--logo-w: 450px; --logo-h: auto; --logo-x: 0px; --logo-y: -8px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: -6px;">
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="Pknowyourfilms.html" class="card-link">
+      <img src="image/films.svg" class="card-img" alt="Films"
+           style="--logo-w: 550px; --logo-h: auto; --logo-x: -10px; --logo-y: 0px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: 0px;">
+    </a>
+  </div>
+
+<div class="card">
+    <a href="Pknowyourfilms.html" class="card-link">
+      <img src="image/relihiyon.svg" class="card-img" alt="Films"
+           style="--logo-w: 450px; --logo-h: auto; --logo-x: 0px; --logo-y: 15px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: -6px;">
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="Pknowyourfilms.html" class="card-link">
+    <img src="image/food.svg" class="card-img" alt="Religion"
+           style="--logo-w: 450px; --logo-h: auto; --logo-x: -10px; --logo-y: 120px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: 0px;" hotspot>
+    </a>
+  </div>
+
+</div>

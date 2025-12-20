@@ -1,0 +1,2016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7972235990531363"
+     crossorigin="anonymous"></script>
+  <title>Pknow Your Films</title>
+  <meta name="description" content="Pknow Your Films — Filipino Films Collection" />
+  <style>
+
+:root {
+  --bg: url("image/bolbohol.jpg");
+  --text: #111;
+  --accent: #76b5ff;
+  --card-bg: #f4f4f4;
+  --radius: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+:root.dark {
+  --bg: #0c0c0c;
+  --text: #e6e6e6;
+  --card-bg: #111;
+  --accent: #8bc2ff;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  text-align: center;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.logo{
+  width: 100%;
+  height: auto;
+  max-width: 950px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: -70px;
+  margin-top: -50px;
+}
+
+#searchBar {
+  width: 100%;
+  max-width: 650px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 1;
+}
+
+#darkToggle {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ===========================
+   FILTERS
+   =========================== */
+
+  #filters{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+  padding-left: 110px; /* safer for inner spacing */
+  width: 100%;
+}
+
+
+.filter-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+}
+
+.control-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.control-btn:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+#clearFiltersBtn {
+  background: #ffecec;
+  color: #b40000;
+  border: 1px solid #ffb3b3;
+}
+
+#clearFiltersBtn:hover {
+  background: #ffdddd;
+  border-color: #ff9999;
+}
+
+#shuffleBtn {
+  background: #b2d2b2;
+  color: #035403;
+  border: 1px solid #5b8d5b;
+}
+
+#shuffleBtn:hover {
+  background: #abebab;
+  border-color: #144114;
+}
+
+#toggleViewBtn {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #b2d9ff;
+  color: #023a6b;
+  border: 1px solid #5b8dbd;
+  font-size: 20px;         /* icon size */
+  line-height: 1;
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols", system-ui, sans-serif;
+}
+
+#toggleViewBtn:hover {
+  background:#abdcff;
+  border-color:#14456b;
+}
+
+/* ===========================
+   FILM CARD CSS (Your Style)
+   =========================== */
+
+.film-card {
+  background: #0000007a; /* soft gray like screenshot */
+  color: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 820px;
+  height: 230px;
+  align-items: flex-start;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  transition: transform .2s ease, box-shadow .2s ease;
+  overflow: hidden;
+  position:relative
+
+}
+
+.film-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+
+.film-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(0,0,0,0.55);
+}
+
+.film-poster {
+  width: 150px;
+  flex: 0 0 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.film-poster img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100% - 64px); /* leave room for rating/footer */
+  object-fit: cover;
+  border-radius: 8px;
+  background: #000;
+}
+
+
+.rating {
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+/* Place rating overlay at bottom of poster */
+.film-poster .rating {
+  margin-top: auto; /* push rating to bottom of poster column */
+  padding-top: 8px;
+  padding-left: 8px;
+  background: rgba(0,0,0,0.12);
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.star {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px; /* larger stars for visibility */
+  line-height: 1;
+  color: rgba(109, 54, 54, 0.15);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+
+.star::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  overflow: hidden;
+  color: #f6c744;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.star.full::before { width: 100%; }
+.star.half::before { width: 50%; }
+
+.poster-footer img{ width:34px; opacity:0.9 }
+
+.rating-score{ display:none }
+
+.film-title {
+  padding-bottom: 8px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.05;
+
+  white-space: nowrap;        /* force one line */
+  overflow: hidden;           /* hide overflow */
+  text-overflow: ellipsis;    /* show ... */
+  max-width: 100%;            /* required for ellipsis */
+}
+
+
+.film-director a{ color: #5badc4; }
+.director-link, a{ cursor: pointer; transition: color 0.12s ease; color: #ffffff; text-decoration: none; }
+.director-link:hover, .film-director a:hover{ color:#4b94b9be }
+.film-details p{ color: #ffffff; line-height:1.6;  }
+.film-details .section-label{ margin-top: 10px; margin-bottom:6px; color: #ffffff; font-weight:500 }
+
+ .film-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;        /* VERY IMPORTANT */
+  overflow: hidden;    /* prevent overflow */
+}
+
+.film-details {
+  flex: 1 1 auto; /* allow details to take remaining vertical space */
+  min-height: 0;
+  overflow: hidden;
+}
+
+.film-details p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 4; /* allow up to 4 lines to fit the card */
+  -webkit-line-clamp: 4;
+}
+
+.section-label {
+  margin: 6px 0 2px;
+  font-size: 14px;
+}
+
+.film-details { margin: 0 }
+
+
+/* ===========================
+   GRID
+   =========================== */
+
+/* Cards stacked in a single column, centered */
+#filmGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  gap: var(--space-md);
+}
+
+/* Make cards narrower on small screens for better fit */
+@media (max-width: 600px) {
+  .film-card { max-width: 92%; }
+}
+
+/* Header controls: search + toggle */
+.header-controls{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#darkToggle{
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.control-btn{
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.control-btn:hover{ background: rgba(255,255,255,0.02) }
+
+#filmGrid.poster-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
+  gap: 12px;
+  justify-content: center;     /* CENTER align columns */
+  justify-items: center;       /* CENTER align cards */
+  padding: 12px;
+  margin: 0 auto;              /* center the grid */
+  max-width: 1100px;           /* match the .wrap max-width */
+}
+
+
+.poster-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 8px;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;  /* center each card within its grid cell */
+}
+
+.poster-card .film-poster{ width:100%; padding:0; border:none; background:transparent }
+.poster-card .film-poster img{ width:100%; height: auto; max-height: 220px; object-fit: cover }
+.poster-card .rating{ margin-top:8px; justify-content:center }
+.poster-card .star{ font-size:22px }
+.poster-card .rating{ background: transparent; padding: 6px 0; border-radius: 0 }
+.poster-title{ font-size:14px; font-weight:700; margin-top:8px; color:#fff; text-align:center; font-display: 'Times New Roman'; }
+.poster-synopsis p{ color:#dcdcdc; font-size:12px; line-height:1.2; margin:6px 0 0 }
+.poster-synopsis p{ display:-webkit-box; line-clamp: 2; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis }
+
+/* Detail view like/dislike buttons */
+.film-card .card-actions{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.film-card:hover .card-actions {
+  opacity: 1;
+}
+
+/* Poster view like/dislike buttons (always visible, at bottom) */
+.poster-card .card-actions {
+  position: static;        /* Remove absolute positioning */
+  opacity: 1;              /* Always visible */
+  margin-top: 8px;         /* Space from synopsis */
+  width: 100%;             /* Full width */
+  justify-content: center; /* Center the buttons */
+}
+
+.film-card:hover .card-actions {
+  opacity: 1;
+}
+
+.card-actions .like-btn, .card-actions .dislike-btn{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); color:inherit; cursor:pointer }
+.card-actions .like-btn.active{ background: rgba(108,192,76,0.14); border-color: rgba(108,192,76,0.25) }
+.card-actions .dislike-btn.active{ background: rgba(255,94,94,0.12); border-color: rgba(255,94,94,0.25) }
+.card-actions .count{ font-weight:700 }
+
+@media (max-width: 600px){
+  .film-card{flex-direction:column; align-items:center; text-align:center}
+  .film-poster img{width:80%; max-width:320px}
+  .film-info{align-items:center}
+  .header-controls{flex-direction:column; gap:8px}
+}
+
+/* ===========================
+   MODAL
+   =========================== */
+
+.modal {
+  display: none;                 /* hidden initially */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal.open { display:flex; }
+
+/* Fix modal height and contain internal scrolling */
+.modal-content {
+  background-color: rgba(39, 39, 39, 0.797);
+  padding: 20px;
+  border-radius: 14px;
+
+  width: 95%;
+  max-width: 920px;
+
+  height: 580px;
+  max-height: 565px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* header/tabs fixed */
+  position: relative; /* contain absolute children like close button */
+}
+
+/* Active panel fills remaining height; body manages columns */
+.modal-panel.active {
+  display: block;
+  flex: 1 1 auto;
+  overflow: hidden; /* contain body grid */
+}
+
+/* Two-column area uses full panel height */
+.modal-body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  overflow: hidden; /* prevent whole body scroll */
+}
+
+/* Left column remains static */
+/* ...existing code... */
+
+/* Modal poster: fixed column width with stable aspect */
+.modal-left{ overflow:auto; }
+.modal-poster{
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* Ratings under poster */
+.modal-ratings{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  margin-top:8px;
+}
+
+/* Order and line breaks */
+.modal-ratings .imdb-rating{ order:1; }
+.modal-ratings .letterboxd-stars{
+  order:2;
+  flex-basis:100%;   /* move to next line */
+  margin-top:4px;
+}
+
+/* NEW: RT row (tomato + popcorn side-by-side on its own line) */
+.modal-ratings .rt-row{
+  order:3;
+  flex-basis:100%;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
+}
+
+/* Children inside RT row */
+.modal-ratings .rt-row > .rt-tomatometer,
+.modal-ratings .rt-row > .rt-popcorn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Each rating item */
+.modal-ratings .rating-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:inherit;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.modal-ratings .rating-link img{
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  border-radius:6px;
+}
+.modal-ratings .rating-link span{
+  font-size:14px;
+  color:#bdbdbd;
+  line-height:1;
+}
+
+/* Bigger stars in modal (IMDB gold, Letterboxd green) */
+.modal .star{
+  font-size:44px;
+  line-height:1;
+  position:relative;
+  color:rgba(255,255,255,0.18);
+  vertical-align:middle;
+}
+.modal .star::before{ color:#f6c744 }          /* IMDB */
+.modal .star.letterboxd::before{ color:#6cc04a }/* Letterboxd */
+/* Right column header fixed, text area scrolls */
+.modal-details{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;              /* contain scroller */
+}
+
+/* Modal close button */
+.modal-close{
+  position: static;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 70;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s ease, transform .15s ease;
+}
+.modal-close:hover{ background: rgba(255,255,255,0.22); transform: scale(1.05); }
+.modal-close:active{ transform: scale(0.98); }
+
+.modal-scroll{
+  flex:1 1 auto;                /* take remaining height */
+  min-height:0;
+  overflow-y:auto;              /* separate scrollbar */
+  padding-right:10px;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ...existing code... */
+
+/* Right-column scroller + video panels: sleek dark scrollbar */
+.modal-scroll,
+.modal-panel[data-panel="trailer"],
+.modal-panel[data-panel="movie"] {
+  scrollbar-gutter: stable;                 /* reserve space; no layout shift */
+  scrollbar-width: thin;                    /* Firefox */
+  scrollbar-color: rgba(78, 78, 78, 0.28)   /* thumb */
+                   rgba(0, 0, 0, 0.06);  /* track */
+}
+
+/* Chromium/WebKit */
+.modal-scroll::-webkit-scrollbar,
+.modal-panel[data-panel="trailer"]::-webkit-scrollbar,
+.modal-panel[data-panel="movie"]::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.modal-scroll::-webkit-scrollbar-track,
+.modal-panel[data-panel="trailer"]::-webkit-scrollbar-track,
+.modal-panel[data-panel="movie"]::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb,
+.modal-panel[data-panel="trailer"]::-webkit-scrollbar-thumb,
+.modal-panel[data-panel="movie"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(22, 21, 21, 0.35), rgba(44, 42, 42, 0.22));
+  border-radius: 10px;
+  border: 2px solid rgba(239, 238, 238, 0.85);    /* creates inset gap to match modal */
+}
+
+.modal-scroll:hover::-webkit-scrollbar-thumb,
+.modal-panel[data-panel="trailer"]:hover::-webkit-scrollbar-thumb,
+.modal-panel[data-panel="movie"]:hover::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8bc2ff, rgba(139,194,255,0.6)); /* accent on hover */
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:active,
+.modal-panel[data-panel="trailer"]::-webkit-scrollbar-thumb:active,
+.modal-panel[data-panel="movie"]::-webkit-scrollbar-thumb:active {
+  background: #76b5ff;                      /* pressed state */
+}
+
+.modal-header-actions {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+}
+
+.modal-like-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-like-btn,
+.modal-dislike-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-like-btn:hover,
+.modal-dislike-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.modal-like-btn.active {
+  background: rgba(108,192,76,0.2);
+  border-color: rgba(108,192,76,0.4);
+}
+
+.modal-dislike-btn.active {
+  background: rgba(255,94,94,0.2);
+  border-color: rgba(255,94,94,0.4);
+}
+
+/* Icon sizing for both card and modal */
+.modal-like-btn .like-icon,
+.modal-dislike-btn .like-icon,
+.card-actions .like-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Make SVG white */
+}
+
+.modal-like-btn .count,
+.modal-dislike-btn .count {
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Modal close button */
+.modal-close {
+  position: static;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.05);
+}
+
+.modal-close:active {
+  transform: scale(0.98);
+}
+
+
+/* Tighten the inner padding so content doesn’t collide with the bar */
+.modal-scroll { padding-right: 10px; }
+/* ...existing code... */
+
+/* Modal right column typography */
+.modal-details{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  color:#e6e6e6;
+}
+
+/* Title */
+#modalTitle{
+  margin:0 0 6px;
+  font-size:30px;
+  font-weight:800;
+  line-height:1.1;
+  color:#fff;
+  letter-spacing:.2px;
+  text-wrap: balance;
+}
+
+/* Director line */
+#modalDirector{
+  margin:2px 0 6px;
+  font-size:14px;
+  color:#cfcfcf;
+}
+#modalDirector a.director-link{
+  color:#6cc04a;
+  text-decoration:none;
+  transition: color .15s ease;
+}
+#modalDirector a.director-link:hover{ color:#8de164; }
+
+/* Meta row: Year • Genres • MPA */
+.modal-details .meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:4px 0 10px;
+  color:#bdbdbd;
+  font-size:13px;
+}
+#modalYear{ color:#dcdcdc; }
+#modalGenre{ color:#bdbdbd; }
+.mpa-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:2px 8px;
+  border-radius:6px;
+  font-weight:700;
+  font-size:12px;
+  background: rgba(255,255,255,0.08);
+  color:#fff;
+}
+
+/* Section headers and paragraph text */
+.modal-details .section-label{
+  margin:12px 0 6px;
+  font-weight:700;
+  font-size:14px;
+  color:#e2dfdf;
+}
+.modal-details p{
+  margin:0;
+  color:#dcdcdc;
+  line-height:1.55;
+  font-weight:400; /* fixed (was 100px) */
+}
+.modal-details p strong{ color:#fff; font-weight:700; }
+.modal-details p em{ color:#f0f0f0; }
+
+.modal-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  background: #000;
+}
+
+
+
+/* ===========================
+   MODAL TOP TABS
+   =========================== */
+
+.modal-tabs{
+  display:flex;
+  gap:10px;
+  padding-bottom:10px;
+  margin-bottom:12px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.modal-panel{
+  display: none;
+}
+
+.modal-panel.active{
+  display: block;
+}
+
+
+.tab-btn{
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.05);
+  color:#dcdcdc;
+  cursor:pointer;
+  font-size:14px;
+  transition:background .15s ease, border .15s ease;
+}
+
+.tab-btn:hover{
+  background:rgba(255,255,255,0.12);
+}
+
+.tab-btn.active{
+  background:#ffffff;
+  color:#111;
+  border-color:#ffffff;
+}
+
+/* No underline for embedded links */
+.film-card a,
+.modal a,
+.director-link,
+.modal-ratings .rating-link {
+  text-decoration: none;
+}
+
+/* Keep underline off on hover */
+.film-card a:hover,
+.modal a:hover,
+.director-link:hover,
+.modal-ratings .rating-link:hover {
+  text-decoration: none;
+}
+
+.cast-list{
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 12px;
+  color: #dcdcdc;
+  font-size: 13px;
+}
+.cast-list li { display:flex; gap:10px; align-items:center; }
+.cast-list .avatar {
+  display: block;           /* ensure img takes the box */
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #222;
+  flex: 0 0 40px;
+}
+.cast-list .info { display:flex; flex-direction:column; line-height:1.2 }
+.cast-list .name { 
+  font-weight: 400; 
+  color: #6cc04a;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.cast-list .name:hover {
+  color: #8de164;
+}
+
+.cast-list .role { color:#bdbdbd; font-size:12px }
+</style>
+</head>
+
+<body>
+
+<!-- ===========================
+     HEADER + SEARCH
+     =========================== -->
+<header>
+  <div class="fixed-canvas">
+    <div class="wrap" id="app">
+      <img src="./image/films.svg" class="logo"/> 
+      <div class="header-controls">
+        <input type="text" id="searchBar" placeholder="Search films...">
+        <button id="darkToggle">Dark Mode</button>
+      </div>
+      <div id="filters">
+        <select id="yearFilter" class="filter-select">
+          <option value="">All Years</option>
+        </select>
+        <select id="genreFilter" class="filter-select">
+          <option value="">All Genres</option>
+        </select>
+        <select id="directorFilter" class="filter-select">
+          <option value="">All Directors</option>
+        </select>
+                <button id="clearFiltersBtn" class="control-btn">Clear</button>
+
+        <button id="shuffleBtn" class="control-btn">Shuffle</button>
+        <button id="toggleViewBtn" class="control-btn" aria-label="Switch view" title="Switch view">☰</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ===========================
+     FILM GRID
+     =========================== -->
+<div id="filmGrid"></div>
+
+<!-- ===========================
+     MODAL POP-UP
+     =========================== -->
+<div class="modal" id="filmModal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <div class="modal-header-actions">
+      <div class="modal-like-actions">
+        <button class="modal-like-btn" data-action="like">
+          <img src="./image3/up.svg" alt="like" class="like-icon">
+          <span class="count">0</span>
+        </button>
+        <button class="modal-dislike-btn" data-action="dislike">
+          <img src="./image3/down.svg" alt="dislike" class="like-icon">
+          <span class="count">0</span>
+        </button>
+      </div>
+      <span class="modal-close" id="modalClose">×</span>
+    </div>
+
+    <div class="modal-tabs">
+      <button class="tab-btn active" data-tab="info">Info</button>
+      <button class="tab-btn" data-tab="trailer">Trailer</button>
+      <button class="tab-btn" data-tab="movie">Movie</button>
+    </div>
+
+    <!-- Panels: keep inside modal-content -->
+    <div class="modal-panel active" data-panel="info">
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="modalPoster" class="modal-poster" alt="Poster">
+          <div class="modal-ratings" id="modalRatings"></div>
+        </div>
+        <div class="modal-details">
+          <h2 id="modalTitle"></h2>
+          <div id="modalDirector" class="director"></div>
+          <div class="meta"><span id="modalYear"></span> <span id="modalGenre"></span> <span class="mpa-badge" id="modalMPA" style="display:none"></span></div>
+          <div class="modal-scroll">
+            <div class="modal-section">
+              <div class="section-label">Details:</div>
+              <p id="modalDesc"></p>
+            </div>
+            <div class="modal-section">
+              <div class="section-label">Synopsis:</div>
+              <p id="modalSynopsis"></p>
+            </div>
+            <div class="modal-section" id="modalCastCrew" style="display:none">
+              <div class="section-label">Cast & Crew:</div>
+              <ul id="modalCastList" class="cast-list"></ul>
+            </div>
+          </div>
+          <div class="modal-actions"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-panel" data-panel="trailer">
+      <iframe id="modalTrailer" class="modal-video" allowfullscreen></iframe>
+    </div>
+
+    <div class="modal-panel" data-panel="movie">
+      <iframe id="modalMovie" class="modal-video" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ===========================
+     FILM DATA (JSON)
+     =========================== -->
+<script> 
+  const FILMS = [
+{
+  title: "Dalagang Bukid",
+  year: 1919,
+  poster: "./image3/bukid.png",
+  genre: ["Silent Film", "Drama"],
+  director: { name: "José Nepomuceno", link: "#" },
+  details: "Dalagang Bukid (1919) is the first full-length Filipino silent film, directed by José Nepomuceno. It tells the story of a young, innocent provincial girl who navigates love, family, and societal expectations, highlighting Filipino rural life and traditional values. The film is a landmark in Philippine cinema, laying the foundation for the country's film industry. Dalagang",
+  synopsis: "Dalagang Bukid follows the story of Angelita, a young and virtuous country girl who lives a simple life in her provincial town. She falls in love with a humble man, but their budding romance faces obstacles from societal expectations, family pressures, and misunderstandings. Through trials and challenges, Angelita's innocence, courage, and sincerity shine, ultimately leading to love, reconciliation, and a reaffirmation of traditional Filipino values.",
+  trailer: "https://www.youtube.com/watch?v=0aqTbXDLYlQ",
+  movie: "https://www.youtube.com/watch?v=GRKyane3GA8",
+  mpa_rating: "G",
+  ratings: {
+    imdb: { score: "no data", link: "https://www.imdb.com/title/tt0451692/", icon: "./icons/imdb.png" },
+    rotten_tomatoes: { tomatometer: "no data%", popcornmeter: "no data", link: "https://en.wikipedia.org/wiki/Dalagang_Bukid" },
+    letterboxd: { score: "no data", link: "https://letterboxd.com/film/country-maiden/", icon: "./icons/letterboxd.png" }
+  },
+  cast: [
+    { name: "José Nepomuceno", role: "Director", photo: "./image3/jose.jpg", link: "https://en.wikipedia.org/wiki/Jos%C3%A9_Nepomuceno" },
+    { name: "Atang Dela Rama", role: "Lead", photo: "", link: "https://en.wikipedia.org/wiki/Atang_de_la_Rama" },
+    { name: "Mar I. Esmeralda", role: "Supporting", photo: "", link: "https://en.wikipedia.org/wiki/Special:Search?search=Mar+I.+Esmeralda" },
+  ]
+},
+
+{
+    title: "Orapronobis (Fight For Us)",
+  year: 1989,
+  poster: "./image3/ora.jpg",
+  genre: ["Drama"],
+  director: {
+    name: "Lino Brocka",
+    link: "https://en.wikipedia.org/wiki/Lino_Brocka"
+  },
+  details: "", 
+  synopsis: "Dalagang Bukid follows the story of Angelita, a young and virtuous country girl who lives a simple life in her provincial town. She falls in love with a humble man, but their budding romance faces obstacles from societal expectations, family pressures, and misunderstandings. Through trials and challenges, Angelita’s innocence, courage, and sincerity shine, ultimately leading to love, reconciliation, and a reaffirmation of traditional Filipino values.",
+  trailer: "https://www.youtube.com/watch?v=OHOtdcdd8R0",
+  movie:'https://www.youtube.com/watch?v=ubJtywJcS6E',
+  mpa_rating: "SPG",
+  ratings: {
+    imdb: {
+      score: "7",
+      link: "https://www.imdb.com/title/tt0097583/",
+      icon: "./icons/imdb.png"
+    },
+    rotten_tomatoes: {
+      tomatometer: "0%",
+      popcornmeter: "0",
+      link: "https://www.rottentomatoes.com/m/national_anarchist_lino_brocka",
+    },
+    letterboxd: {
+      score: "3.8",
+      link: "https://letterboxd.com/film/fight-for-us/",
+      icon: "./icons/letterboxd.png"
+    }
+  }
+},
+
+
+];
+
+// Active list & original copy so we can shuffle/restore without losing source data
+const ORIGINAL_FILMS = FILMS.slice();
+let ACTIVE_FILMS = ORIGINAL_FILMS.slice();
+
+</script>
+
+<!-- Image preview overlay (appears on poster hover) -->
+<div id="imagePreview" class="image-preview" aria-hidden="true">
+  <img src="" alt="Preview">
+  <div class="preview-title"></div>
+</div>
+
+<style>
+  .image-preview{ position: fixed; display:none; z-index:1200; pointer-events:none; opacity:0; transition:opacity .12s ease; border-radius:8px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.6); background: rgba(0,0,0,0.85); }
+  .image-preview img{ display:block; width:360px; max-width:40vw; height:auto; object-fit:cover; }
+  .preview-title{ padding: 8px 12px; color: #fff; font-size: 14px; font-weight: 00; text-align: center; background: rgba(105, 102, 102, 0.264); } /*preview title bar */
+  .image-preview.show{ display:block; opacity:1 }
+  @media (max-width:700px){ .image-preview{ display:none !important } }
+</style>
+
+<script>
+// In the position() function inside attachPreview(), change the top calculation:
+function position(e){
+  if (!shown) return;
+  const px = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || 0;
+  const py = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY) || 0;
+  const el = preview;
+  const padding = 12;
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  const vwBox = el.offsetWidth || Math.min(360, Math.round(vw * 0.4));
+  const boxH = el.offsetHeight || Math.round(vwBox * 1.4);
+  
+  let left = px + 20;
+  let top = py - boxH - 20;  // Default: above cursor
+  
+  // Adjust horizontal position if too far right
+  if (left + vwBox + padding > vw) left = vw - vwBox - padding;
+  if (left < padding) left = padding;
+  
+  // Only show below if not enough room above AND there IS room below
+  if (top < padding && (py + boxH + 40 < vh)) {
+    top = py + 20;  // Show below cursor only if room exists
+  } else if (top < padding) {
+    top = padding;  // Clamp to top of viewport
+  }
+  
+  el.style.left = left + 'px';
+  el.style.top = top + 'px';
+}
+</script>
+
+<!-- ===========================
+     MAIN JAVASCRIPT
+     =========================== -->
+<script>
+// =========================== MAIN JAVASCRIPT ===========================
+
+// DOM elements
+const grid = document.getElementById("filmGrid");
+const yearFilter = document.getElementById("yearFilter");
+const genreFilter = document.getElementById("genreFilter");
+const directorFilter = document.getElementById("directorFilter");
+const searchBar = document.getElementById("searchBar");
+// Modal elements
+const modal = document.getElementById("filmModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalPoster = document.getElementById("modalPoster");
+const modalDirector = document.getElementById("modalDirector");
+const modalYear = document.getElementById("modalYear");
+const modalGenre = document.getElementById("modalGenre");
+const modalDesc = document.getElementById("modalDesc");
+const modalTrailer = document.getElementById("modalTrailer");
+const modalSynopsis = document.getElementById("modalSynopsis");
+const modalRatings = document.getElementById("modalRatings");
+const modalMPA = document.getElementById("modalMPA");
+
+// ADD: modalMovie element
+const modalMovie = document.getElementById("modalMovie");
+
+// ADD: convert various YouTube URLs to embed form
+function toEmbedUrl(url){
+  if (!url) return '';
+  try{
+    const u = new URL(url, location.href);
+    // youtu.be/<id>
+    if (u.hostname.includes('youtu.be')) {
+      return `https://www.youtube.com/embed/${u.pathname.replace('/','')}`;
+    }
+    // youtube watch?v=<id>
+    if (u.hostname.includes('youtube.com')) {
+      const id = u.searchParams.get('v');
+      if (id) return `https://www.youtube.com/embed/${id}`;
+      // already embed or other paths
+      if (u.pathname.includes('/embed/')) return u.href;
+    }
+    return u.href;
+  }catch(e){
+    return url;
+  }
+}
+
+// Choose a Rotten Tomatoes badge based on percentage score string like "92%"
+function getRottenIcon(scoreStr){
+  const base = './image3/';
+  if (!scoreStr || !scoreStr.trim()) return base + 'noinfo.png';
+  const m = scoreStr.match(/(\d+)(?:%|)/);
+  if (!m) return base + 'noinfo.png';
+  const n = parseInt(m[1], 10);
+  if (Number.isNaN(n)) return base + 'noinfo.png';
+  // Certified fresh if >=75 per your rule
+  if (n >= 75) return base + 'certifiedfresh.svg';
+  if (n >= 60) return base + 'positive.png';
+  if (n < 60) return base + '60%negative.png';
+  return base + 'noinfo.png';
+}
+
+// Choose a letterboxd icon for numeric scores like "3.8"
+function getLetterboxIcon(scoreStr){
+  const base = './image3/';
+  const n = parseFloat(scoreStr);
+  if (!Number.isFinite(n)) return base + 'noinfo.png';
+  return n >= 3.5 ? base + 'morethan3.5.svg' : base + 'lessthan3.5.svg';
+}
+
+function getPopcornIcon(scoreStr){
+  const base = './image3/';
+  if (!scoreStr || !scoreStr.toString().trim()) return base + 'grey.svg';
+  const n = parseFloat(scoreStr);
+  if (!Number.isFinite(n)) return base + 'grey.svg';
+  if (n >= 3.5) return base + 'morethan3.5.svg';
+  return base + 'lessthan3.5.svg';
+}
+
+// If popcornmeter (audience/popcorn score) is 4.0 or higher, show verified popcorn icon
+function isVerifiedPopcorn(scoreStr){
+  const n = parseFloat(scoreStr);
+  return Number.isFinite(n) && n >= 4.0;
+}
+
+// Utility: produce a safe absolute URL or fallback
+function safeLink(link, fallback) {
+  if (!link || !link.trim()) return fallback;
+  try {
+    const u = new URL(link, location.href);
+    if (u.protocol === 'http:' || u.protocol === 'https:') return u.href;
+    return fallback;
+  } catch (e) {
+    return fallback;
+  }
+}
+
+// Populate dynamic filter dropdowns
+function populateFilters() {
+  const years = new Set();
+  const genres = new Set();
+  const directors = new Set();
+
+  FILMS.forEach(f => {
+    years.add(f.year);
+    f.genre.forEach(g => genres.add(g));
+    const directorName = (f.director && typeof f.director === 'object') ? f.director.name : (f.director || '');
+    if (directorName) directors.add(directorName);
+  });
+
+  years.forEach(y => yearFilter.innerHTML += `<option value="${y}">${y}</option>`);
+  genres.forEach(g => genreFilter.innerHTML += `<option value="${g}">${g}</option>`);
+  directors.forEach(d => directorFilter.innerHTML += `<option value="${d}">${d}</option>`);
+}
+
+// Render
+function renderFilms() {
+  // honor saved view each render
+  grid.classList.toggle('poster-view', VIEW_MODE === 'poster');
+  grid.innerHTML = "";
+
+  const q = searchBar.value.toLowerCase();
+  const yf = yearFilter.value;
+  const gf = genreFilter.value;
+  const df = directorFilter.value;
+
+  ACTIVE_FILMS.filter(f => {
+    const _directorName = (f.director && typeof f.director === 'object') ? f.director.name : (f.director || '');
+    if (q && !f.title.toLowerCase().includes(q)) return false;
+    if (yf && f.year != yf) return false;
+    if (gf && !f.genre.includes(gf)) return false;
+    if (df && _directorName !== df) return false;
+    return true;
+  }).forEach((f) => {
+    // REMOVE async Firebase fetch here; counts come from Firestore onSnapshot.
+    if (typeof f.likes !== 'number') f.likes = 0;
+    if (typeof f.dislikes !== 'number') f.dislikes = 0;
+
+    const card = document.createElement("div");
+    const filmId = getFilmId(f.title, f.year);
+    card.dataset.filmId = filmId;
+
+    // IMDB-based stars (score is like "4.7/10") with half-star support
+    const imdbRaw = (f.ratings && f.ratings.imdb && f.ratings.imdb.score) || '';
+    const imdbNum = parseFloat(imdbRaw) || NaN;
+    const valueOutOf5 = Number.isFinite(imdbNum) ? imdbNum / 2 : NaN;
+    const roundedToHalf = Number.isFinite(valueOutOf5) ? Math.round(valueOutOf5 * 2) / 2 : 0;
+    const fullStars = Number.isFinite(roundedToHalf) ? Math.floor(roundedToHalf) : 0;
+    const hasHalf = Number.isFinite(roundedToHalf) ? (roundedToHalf - fullStars === 0.5) : false;
+
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) stars += `<span class="star full">★</span>`;
+      else if (i === fullStars && hasHalf) stars += `<span class="star half">★</span>`;
+      else stars += `<span class="star empty">★</span>`;
+    }
+
+    const scoreLabel = Number.isFinite(imdbNum) ? `<span class="rating-score">${imdbNum}/10</span>` : '';
+
+    const directorName = (f.director && typeof f.director === 'object') ? f.director.name : (f.director || '');
+    let directorLink = (f.director && typeof f.director === 'object') ? f.director.link : (f.director_link || '');
+    const defaultSearch = directorName ? `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(directorName)}` : '#';
+    directorLink = safeLink(directorLink, defaultSearch);
+
+    if (VIEW_MODE === 'poster') {
+      card.className = 'film-card poster-card';
+      card.innerHTML = `
+        <div class="film-poster">
+          <img src="${f.poster}" alt="${f.title}">
+        </div>
+        <div class="poster-title">${f.title} (${f.year})</div>
+        <div class="rating">${stars}${scoreLabel}</div>
+        <div class="poster-synopsis"><p>${f.synopsis}</p></div>
+        <div class="card-actions">
+          <button class="like-btn" data-action="like">👍 <span class="count">${f.likes||0}</span></button>
+          <button class="dislike-btn" data-action="dislike">👎 <span class="count">${f.dislikes||0}</span></button>
+        </div>
+      `;
+    } else {
+      card.className = 'film-card';
+      card.innerHTML = `
+        <div class="film-poster">
+          <img src="${f.poster}" alt="${f.title}">
+          <div class="rating">${stars}${scoreLabel}</div>
+          <!-- removed poster-footer image to avoid 404 -->
+        </div>
+        <div class="film-info">
+          <div class="film-title">${f.title} (${f.year})</div>
+          <div class="film-director">Directed by: ${directorName ? `<a class="director-link" href="${directorLink}" target="_blank" rel="noopener noreferrer" aria-label="Profile for ${directorName.replace(/\"/g, '&quot;')}">${directorName}</a>` : 'Unknown'}</div>
+          <div class="film-details">
+            <div class="section-label">Details:</div>
+            <p>${f.details}</p>
+          </div>
+          <div class="card-actions">
+            <button class="like-btn" data-action="like"> <img src="./image3/up.svg" alt="like" class="like-icon"> <span class="count">${f.likes||0}</span></button>
+            <button class="dislike-btn" data-action="dislike"><img src="./image3/down.svg" alt="dislike" class="like-icon"> <span class="count">${f.dislikes||0}</span></button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Stop propagation on any anchor inside the card
+    card.querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => e.stopPropagation()));
+
+    // Restore user's previous vote state ONLY (do not mutate counts)
+    const voteKey = `vote_${(f.title||'').replace(/[^a-z0-9]/gi,'_')}_${f.year||''}`;
+    const saved = localStorage.getItem(voteKey);
+    if (saved === 'like') {
+      const btn = card.querySelector('.like-btn'); if (btn) btn.classList.add('active');
+    } else if (saved === 'dislike') {
+      const btn = card.querySelector('.dislike-btn'); if (btn) btn.classList.add('active');
+    }
+
+    // Like/dislike click handlers
+    const likeBtn = card.querySelector('.like-btn');
+    const dislikeBtn = card.querySelector('.dislike-btn');
+    function updateCounts(){
+      if (likeBtn) likeBtn.querySelector('.count').textContent = f.likes;
+      if (dislikeBtn) dislikeBtn.querySelector('.count').textContent = f.dislikes;
+    }
+    if (likeBtn) {
+      likeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const current = localStorage.getItem(voteKey);
+        if (current === 'like') {
+          localStorage.removeItem(voteKey);
+          likeBtn.classList.remove('active');
+          f.likes = Math.max(0, f.likes - 1);
+        } else {
+          localStorage.setItem(voteKey, 'like');
+          likeBtn.classList.add('active');
+          f.likes = (f.likes || 0) + 1;
+          if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'like');
+          if (current === 'dislike') { 
+            f.dislikes = Math.max(0, f.dislikes - 1); 
+            const d = card.querySelector('.dislike-btn'); 
+            if (d) d.classList.remove('active'); 
+            if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'dislike-remove');
+          }
+        }
+        updateCounts();
+      });
+    }
+    if (dislikeBtn) {
+      dislikeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const current = localStorage.getItem(voteKey);
+        if (current === 'dislike') {
+          localStorage.removeItem(voteKey);
+          dislikeBtn.classList.remove('active');
+          f.dislikes = Math.max(0, f.dislikes - 1);
+        } else {
+          localStorage.setItem(voteKey, 'dislike');
+          dislikeBtn.classList.add('active');
+          f.dislikes = (f.dislikes || 0) + 1;
+          if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'dislike');
+          if (current === 'like') { 
+            f.likes = Math.max(0, f.likes - 1); 
+            const l = card.querySelector('.like-btn'); 
+            if (l) l.classList.remove('active');
+            if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'like-remove');
+          }
+        }
+        updateCounts();
+      });
+    }
+
+    card.onclick = () => openModal(f);
+    
+    // Attach poster hover preview (desktop + touch fallback)
+    (function attachPreview(){
+      const preview = document.getElementById('imagePreview');
+      if (!preview) return;
+      const img = card.querySelector('.film-poster img');
+      if (!img) return;
+      let shown = false;
+      function show(e){
+        if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+        const pImg = preview.querySelector('img');
+        const pTitle = preview.querySelector('.preview-title');
+        pImg.src = img.src;
+        if (pTitle) pTitle.textContent = `${f.title} (${f.year})`;
+        preview.classList.add('show');
+        shown = true;
+        position(e);
+      }
+      function position(e){
+        if (!shown) return;
+        const px = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX) || 0;
+        const py = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY) || 0;
+        const el = preview;
+        const padding = 12;
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        const vwBox = el.offsetWidth || Math.min(360, Math.round(vw * 0.4));
+        const boxH = el.offsetHeight || Math.round(vwBox * 1.4);
+        
+        let left = px + 20;
+        let top = py - boxH - 20;  // Default: above cursor
+        
+        // Adjust horizontal position if too far right
+        if (left + vwBox + padding > vw) left = vw - vwBox - padding;
+        if (left < padding) left = padding;
+        
+        // Only show below if not enough room above AND there IS room below
+        if (top < padding && (py + boxH + 40 < vh)) {
+          top = py + 20;  // Show below cursor only if room exists
+        } else if (top < padding) {
+          top = padding;  // Clamp to top of viewport
+        }
+        
+        el.style.left = left + 'px';
+        el.style.top = top + 'px';
+      }
+      function hide(){ preview.classList.remove('show'); shown = false; preview.querySelector('img').src = ''; }
+      img.addEventListener('mouseenter', show);
+      img.addEventListener('mousemove', position);
+      img.addEventListener('mouseleave', hide);
+      // touch fallback: tap to show briefly
+      let touchTimer = null;
+      img.addEventListener('touchstart', (e)=>{
+        e.preventDefault();
+        show(e.touches ? e.touches[0] : e);
+        clearTimeout(touchTimer);
+        touchTimer = setTimeout(hide, 1500);
+      }, {passive:false});
+    })();
+
+    // Details and synopsis are truncated via CSS (line-clamp); do not remove them entirely
+    grid.appendChild(card);
+  });
+}
+
+// Modal logic
+function openModal(f) {
+  // Reset to Info tab
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.modal-panel').forEach(p => p.classList.remove('active'));
+  
+  const infoTab = document.querySelector('.tab-btn[data-tab="info"]');
+  const infoPanel = document.querySelector('.modal-panel[data-panel="info"]');
+  if (infoTab) infoTab.classList.add('active');
+  if (infoPanel) infoPanel.classList.add('active');
+
+  // Initialize counts if missing
+  if (typeof f.likes !== 'number') f.likes = 0;
+  if (typeof f.dislikes !== 'number') f.dislikes = 0;
+
+  // Update modal like/dislike buttons
+  const modalLikeBtn = document.querySelector('.modal-like-btn');
+  const modalDislikeBtn = document.querySelector('.modal-dislike-btn');
+  
+  if (modalLikeBtn) modalLikeBtn.querySelector('.count').textContent = f.likes;
+  if (modalDislikeBtn) modalDislikeBtn.querySelector('.count').textContent = f.dislikes;
+
+  // Restore vote state
+  const voteKey = `vote_${(f.title||'').replace(/[^a-z0-9]/gi,'_')}_${f.year||''}`;
+  const saved = localStorage.getItem(voteKey);
+  
+  if (modalLikeBtn) modalLikeBtn.classList.toggle('active', saved === 'like');
+  if (modalDislikeBtn) modalDislikeBtn.classList.toggle('active', saved === 'dislike');
+
+  // Add click handlers
+  function updateModalCounts() {
+    const filmId = getFilmId(f.title, f.year);
+    updateAllCountDisplays(filmId, f.likes, f.dislikes);
+  }
+
+  if (modalLikeBtn) {
+    modalLikeBtn.onclick = (e) => {
+      e.stopPropagation();
+      const current = localStorage.getItem(voteKey);
+      if (current === 'like') {
+        localStorage.removeItem(voteKey);
+        modalLikeBtn.classList.remove('active');
+        f.likes = Math.max(0, f.likes - 1);
+      } else {
+        localStorage.setItem(voteKey, 'like');
+        modalLikeBtn.classList.add('active');
+        f.likes = (f.likes || 0) + 1;
+        if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'like');
+        if (current === 'dislike') {
+          f.dislikes = Math.max(0, f.dislikes - 1);
+          modalDislikeBtn.classList.remove('active');
+          if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'dislike-remove');
+        }
+      }
+      updateModalCounts();
+    };
+  }
+
+  if (modalDislikeBtn) {
+    modalDislikeBtn.onclick = (e) => {
+      e.stopPropagation();
+      const current = localStorage.getItem(voteKey);
+      if (current === 'dislike') {
+        localStorage.removeItem(voteKey);
+        modalDislikeBtn.classList.remove('active');
+        f.dislikes = Math.max(0, f.dislikes - 1);
+      } else {
+        localStorage.setItem(voteKey, 'dislike');
+        modalDislikeBtn.classList.add('active');
+        f.dislikes = (f.dislikes || 0) + 1;
+        if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'dislike');
+        if (current === 'like') {
+          f.likes = Math.max(0, f.likes - 1);
+          modalLikeBtn.classList.remove('active');
+          if (window.firebaseDB) window.firebaseDB.updateLikes(f.title, f.year, 'like-remove');
+        }
+      }
+      updateModalCounts();
+    };
+  }
+
+  modalTitle.textContent = f.title;
+// tag modal with film id for live updates
+  modal.dataset.filmId = getFilmId(f.title, f.year);
+
+  modalPoster.onerror = function(){ this.onerror = null; this.src = './image3/noinfo.png'; };
+  modalPoster.src = f.poster;
+
+
+  
+  const directorName = (f.director && typeof f.director === 'object') ? f.director.name : (f.director || '');
+  let directorLink = (f.director && typeof f.director === 'object') ? f.director.link : (f.director_link || '');
+  const defaultSearch = directorName ? `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(directorName)}` : '#';
+  directorLink = safeLink(directorLink, defaultSearch);
+  if (directorName) {
+    modalDirector.innerHTML = `Director: <a class="director-link" href="${directorLink}" target="_blank" rel="noopener noreferrer" aria-label="Profile for ${directorName.replace(/\"/g, '&quot;')}">${directorName}</a>`;
+  } else {
+    modalDirector.textContent = 'Director: Unknown';
+  }
+
+  modalYear.textContent = f.year ? `Year: ${f.year}` : '';
+  modalGenre.textContent = (f.genre && f.genre.length) ? ` • ${f.genre.join(', ')}` : '';
+
+  // MPA rating badge
+  if (f.mpa_rating) {
+    modalMPA.style.display = 'inline-flex';
+    modalMPA.textContent = String(f.mpa_rating).toUpperCase();
+  } else {
+    modalMPA.style.display = 'none';
+  }
+
+  modalDesc.textContent = f.details || '';
+  modalSynopsis.textContent = f.synopsis || '';
+
+  // Build ratings area (IMDB stars + other rating icons)
+  modalRatings.innerHTML = '';
+  if (f.ratings) {
+    // 1) IMDB (stars)
+    if (f.ratings.imdb) {
+      const imdbRaw = String(f.ratings.imdb.score || '');
+      const imdbNum = parseFloat(imdbRaw);
+      const outOf5 = Number.isFinite(imdbNum) ? imdbNum / 2 : NaN;
+      const rounded = Number.isFinite(outOf5) ? Math.round(outOf5 * 2) / 2 : 0;
+      const full = Math.floor(rounded);
+      const half = rounded - full === 0.5;
+
+      let starHtml = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < full) starHtml += `<span class="star full">★</span>`;
+        else if (i === full && half) starHtml += `<span class="star half">★</span>`;
+        else starHtml += `<span class="star empty">★</span>`;
+      }
+      const imdbLink = safeLink(f.ratings.imdb.link || '', '#');
+      const imdbNode = document.createElement('div');
+      imdbNode.className = 'imdb-rating';
+      imdbNode.innerHTML = `<a class="rating-link" href="${imdbLink}" target="_blank" rel="noopener noreferrer" aria-label="IMDB">${starHtml}<span>${imdbRaw}</span></a>`;
+      modalRatings.appendChild(imdbNode);
+    }
+
+    // 2) Letterboxd (green stars)
+    if (f.ratings.letterboxd && f.ratings.letterboxd.score) {
+      const lbRaw = String(f.ratings.letterboxd.score || '');
+      const lbNum = parseFloat(lbRaw);
+      const value = Number.isFinite(lbNum) ? Math.min(Math.max(lbNum, 0), 5) : NaN;
+      const rounded = Number.isFinite(value) ? Math.round(value * 2) / 2 : 0;
+      const full = Math.floor(rounded);
+      const half = rounded - full === 0.5;
+
+      let lbStars = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < full) lbStars += `<span class="star letterboxd full">★</span>`;
+        else if (i === full && half) lbStars += `<span class="star letterboxd half">★</span>`;
+        else lbStars += `<span class="star letterboxd empty">★</span>`;
+      }
+      const lbNode = document.createElement('div');
+      lbNode.className = 'letterboxd-stars';
+      const lbLink = safeLink(f.ratings.letterboxd.link || '', '#');
+      lbNode.innerHTML = `<a class="rating-link" href="${lbLink}" target="_blank" rel="noopener noreferrer" aria-label="Letterboxd">${lbStars}<span>${lbRaw}</span></a>`;
+      modalRatings.appendChild(lbNode);
+    }
+
+    // 3) Rotten Tomatoes (tomatometer + popcorn)
+    if (f.ratings.rotten_tomatoes) {
+      const r = f.ratings.rotten_tomatoes;
+      const tom = r.tomatometer || r.score || '';
+      const tomIcon = getRottenIcon(tom);
+      const rtLink = safeLink(r.link || '', '#');
+
+      // Wrap both badges in one row
+      const rtRow = document.createElement('div');
+      rtRow.className = 'rt-row';
+
+      const tomNode = document.createElement('div');
+      tomNode.className = 'rt-tomatometer';
+      tomNode.innerHTML = `<a class="rating-link" href="${rtLink}" target="_blank" rel="noopener noreferrer" aria-label="Tomatometer"><img src="${tomIcon}" alt="Tomatometer ${tom}"><span>${tom}</span></a>`;
+
+      const pm = r.popcornmeter || '';
+      const popIcon = isVerifiedPopcorn(pm) ? './image3/verifiedpopcorn.png' : getPopcornIcon(pm);
+      const popNode = document.createElement('div');
+      popNode.className = 'rt-popcorn';
+      popNode.innerHTML = `<a class="rating-link" href="${rtLink}" target="_blank" rel="noopener noreferrer" aria-label="Popcorn meter"><img src="${popIcon}" alt="Popcorn ${pm}"><span>${pm}</span></a>`;
+
+      rtRow.appendChild(tomNode);
+      rtRow.appendChild(popNode);
+      modalRatings.appendChild(rtRow);
+    }
+  }
+
+  // DELETE: obsolete popup trailer logic (causes ReferenceError)
+  // if (f.trailer) {
+  //   modalTrailer.style.display = 'none';
+  //   modalTrailer.src = '';
+  //   if (openTrailerBtn) {
+  //     openTrailerBtn.style.display = '';
+  //     openTrailerBtn.dataset.trailer = f.trailer;
+  //     openTrailerBtn.textContent = (trailerWindow && !trailerWindow.closed) ? 'Close Trailer' : 'Watch Trailer';
+  //   }
+  // } else {
+  //   modalTrailer.style.display = 'none';
+  //   modalTrailer.src = '';
+  //   if (openTrailerBtn) openTrailerBtn.style.display = 'none';
+  // }
+
+  const castWrap = document.getElementById('modalCastCrew');
+  const castList = document.getElementById('modalCastList');
+  castList.innerHTML = '';
+
+  const castData = f.cast || f.crew || f.cast_and_crew || [];
+  if (Array.isArray(castData) && castData.length) {
+    castWrap.style.display = '';
+    castData.forEach(item => {
+      if (typeof item === 'string') {
+        castList.insertAdjacentHTML('beforeend', `<li><span class="name">${item}</span></li>`);
+      } else if (item && typeof item === 'object') {
+        const name = item.name || '';
+        const role = item.role || item.job || '';
+        const photo = item.photo || item.image || '';
+        const link = item.link || `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(name)}`;
+
+        // invalid if empty or "./image3/.ext"
+        const invalid = !photo || /\/\.(?:jpe?g|png|webp|gif)$/i.test(photo);
+        // use local path directly; fall back to placeholder
+        const src = (!invalid && !/^javascript:/i.test(photo)) ? photo : './image3/noinfo.png';
+
+        castList.insertAdjacentHTML('beforeend', `
+          <li>
+            <img class="avatar" src="${src}" alt="${name}"
+                 onerror="this.onerror=null; this.src='./image3/noinfo.png';">
+            <div class="info">
+              <a class="name" href="${link}" target="_blank" rel="noopener noreferrer">${name}</a>
+              ${role ? `<span class="role">${role}</span>` : ''}
+            </div>
+          </li>
+        `);
+      }
+    });
+  } else {
+    castWrap.style.display = 'none';
+  }
+
+  // Prepare trailer and movie iframes (defer load until tab is active)
+  if (modalTrailer) {
+    modalTrailer.src = '';
+    modalTrailer.dataset.src = f.trailer ? toEmbedUrl(f.trailer) : '';
+  }
+  if (modalMovie) {
+    modalMovie.src = '';
+    modalMovie.dataset.src = f.movie ? toEmbedUrl(f.movie) : '';
+  }
+
+  // Disable tabs if missing
+  const trailerTabBtn = document.querySelector('.tab-btn[data-tab="trailer"]');
+  const movieTabBtn = document.querySelector('.tab-btn[data-tab="movie"]');
+  if (trailerTabBtn) trailerTabBtn.disabled = !f.trailer;
+  if (movieTabBtn) movieTabBtn.disabled = !f.movie;
+
+  modal.classList.add("open");
+}
+
+// Close modal (guarded)
+const modalCloseBtn = document.getElementById("modalClose");
+if (modalCloseBtn) {
+  modalCloseBtn.addEventListener('click', () => {
+    if (modal) modal.classList.remove('open');
+    if (modalTrailer) modalTrailer.src = '';
+    if (modalMovie) modalMovie.src = '';
+  });
+}
+
+// Click outside modal content to close
+if (modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      if (modalTrailer) modalTrailer.src = '';
+      if (modalMovie) modalMovie.src = '';
+    }
+  });
+}
+
+// Open trailer in a separate centered window (toggle close if already open)
+/* REMOVE this entire block (it causes the ReferenceError):
+if (openTrailerBtn) {
+  openTrailerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const url = openTrailerBtn.dataset.trailer;
+    if (!url) return;
+
+    // If popup already open, close it
+    if (trailerWindow && !trailerWindow.closed) {
+      trailerWindow.close();
+      trailerWindow = null;
+      openTrailerBtn.textContent = 'Watch Trailer';
+      return;
+    }
+
+    const watchUrl = embedToWatchUrl(url);
+    const w = 960, h = 540;
+    const left = Math.round((window.screen.width - w) / 2);
+    const top = Math.round((window.screen.height - h) / 2);
+    const opts = `toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,width=${w},height=${h},left=${left},top=${top}`;
+    trailerWindow = window.open(watchUrl, 'trailerWindow', opts);
+    if (trailerWindow) {
+      openTrailerBtn.textContent = 'Close Trailer';
+      trailerWindow.focus();
+    } else {
+      // popup blocked: fallback open in new tab
+      window.open(watchUrl, '_blank');
+    }
+  });
+}
+*/
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const tab = btn.dataset.tab;
+
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.modal-panel').forEach(p=>p.classList.remove('active'));
+    const panel = document.querySelector(`.modal-panel[data-panel="${tab}"]`);
+    if (panel) panel.classList.add('active');
+
+    // Load/unload videos per tab
+    if (tab === 'trailer' && modalTrailer) {
+      modalTrailer.src = modalTrailer.dataset.src || '';
+    } else if (modalTrailer) {
+      modalTrailer.src = '';
+    }
+
+    if (tab === 'movie' && modalMovie) {
+      modalMovie.src = modalMovie.dataset.src || '';
+    } else if (modalMovie) {
+      modalMovie.src = '';
+    }
+  });
+});
+
+// Dark mode toggle with memory
+const darkBtn = document.getElementById('darkToggle');
+if (darkBtn) {
+  // Load saved dark mode preference
+  const savedDarkMode = localStorage.getItem('darkMode');
+  if (savedDarkMode === 'enabled') {
+    document.documentElement.classList.add('dark');
+  }
+  
+  darkBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    // Save preference
+    if (document.documentElement.classList.contains('dark')) {
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      localStorage.removeItem('darkMode');
+    }
+  });
+}
+
+// Shuffle button
+const shuffleBtn = document.getElementById('shuffleBtn');
+if (shuffleBtn) {
+  shuffleBtn.addEventListener('click', () => {
+    // Fisher-Yates shuffle in-place on ACTIVE_FILMS
+    for (let i = ACTIVE_FILMS.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ACTIVE_FILMS[i], ACTIVE_FILMS[j]] = [ACTIVE_FILMS[j], ACTIVE_FILMS[i]];
+    }
+    renderFilms();
+  });
+}
+
+// Clear filters button
+const clearBtn = document.getElementById('clearFiltersBtn');
+if (clearBtn) {
+  clearBtn.addEventListener('click', () => {
+    searchBar.value = '';
+    yearFilter.value = '';
+    genreFilter.value = '';
+    directorFilter.value = '';
+    ACTIVE_FILMS = ORIGINAL_FILMS.slice();
+    renderFilms();
+  });
+}
+
+// View toggle (detailed <-> posters)
+let VIEW_MODE = localStorage.getItem('viewMode') || 'poster';  // Load saved preference
+
+const toggleViewBtn = document.getElementById('toggleViewBtn');
+
+function updateViewToggleUI(){
+  if (!toggleViewBtn) return;
+  const ICONS = { poster: '☷', detailed: '☰' };
+  const target = VIEW_MODE === 'detailed' ? 'poster' : 'detailed';
+  toggleViewBtn.textContent = ICONS[target];
+  toggleViewBtn.setAttribute(
+    'aria-label',
+    target === 'poster' ? 'Switch to Poster view' : 'Switch to Detail view'
+  );
+}
+
+if (toggleViewBtn) {
+  toggleViewBtn.addEventListener('click', () => {
+    VIEW_MODE = VIEW_MODE === 'detailed' ? 'poster' : 'detailed';
+    // Save preference
+    localStorage.setItem('viewMode', VIEW_MODE);
+    document.getElementById('filmGrid').classList.toggle('poster-view', VIEW_MODE === 'poster');
+    renderFilms();
+    updateViewToggleUI();
+  });
+  updateViewToggleUI();
+}
+
+// Initialize with saved view mode
+document.getElementById('filmGrid').classList.toggle('poster-view', VIEW_MODE === 'poster');
+
+// Initialize
+populateFilters();
+grid.classList.toggle('poster-view', VIEW_MODE === 'poster');
+renderFilms();
+updateViewToggleUI();
+
+// ADD: live subscriptions when Firebase is ready
+(function subscribeAllWhenReady(){
+  const tryAttach = () => {
+    if (!window.firebaseDB || !window.firebaseDB.subscribeCounts) return;
+    if (!window._countUnsubs) window._countUnsubs = {};
+    FILMS.forEach(f => {
+      const filmId = getFilmId(f.title, f.year);
+      if (window._countUnsubs[filmId]) return; // already subscribed
+      const unsub = window.firebaseDB.subscribeCounts(f.title, f.year, (likes, dislikes) => {
+        f.likes = likes|0; f.dislikes = dislikes|0;
+        updateAllCountDisplays(filmId, f.likes, f.dislikes);
+      });
+      window._countUnsubs[filmId] = unsub;
+    });
+  };
+  // try now and again shortly (module script loads later)
+  tryAttach();
+ 
+  const t = setInterval(() => {
+    tryAttach();
+    if (window.firebaseDB && window.firebaseDB.subscribeCounts) clearInterval(t);
+  }, 300);
+})();
+
+// REMOVE the auto-clear that forces noisy re-renders
+// setTimeout(() => { ...clearBtn.click()... }, 100);
+
+searchBar.addEventListener("input", renderFilms);
+yearFilter.addEventListener("change", renderFilms);
+genreFilter.addEventListener("change", renderFilms);
+directorFilter.addEventListener("change", renderFilms);
+
+/* ADD: film id + dom updater */
+function getFilmId(title, year){
+  return `${(title||'').toString().toLowerCase().replace(/[^a-z0-9]+/g,'_')}_${year||''}`;
+}
+
+function updateAllCountDisplays(filmId, likes, dislikes){
+  // update cards
+  document.querySelectorAll(`.film-card[data-film-id="${filmId}"] .like-btn .count`)
+    .forEach(el => el.textContent = likes);
+  document.querySelectorAll(`.film-card[data-film-id="${filmId}"] .dislike-btn .count`)
+    .forEach(el => el.textContent = dislikes);
+  // update modal if this film is open
+  if (modal && modal.classList.contains('open') && modal.dataset.filmId === filmId){
+    const ml = document.querySelector('.modal-like-btn .count');
+    const md = document.querySelector('.modal-dislike-btn .count');
+    if (ml) ml.textContent = likes;
+    if (md) md.textContent = dislikes;
+  }
+}
+
+// expose to module script safely
+window.getFilmId = getFilmId;
+window.updateAllCountDisplays = updateAllCountDisplays;
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, updateDoc, onSnapshot, increment, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBLk8ih6kw4uJkdrTXv4EZnqVjEhGweWgs",
+    authDomain: "pknowyourfilms.firebaseapp.com",
+    projectId: "pknowyourfilms",
+    storageBucket: "pknowyourfilms.firebasestorage.app",
+    messagingSenderId: "450842546266",
+    appId: "1:450842546266:web:11b608d6bdd5c9b4c38863",
+    measurementId: "G-BETBSFWJWR"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.firebaseDB = {
+    updateLikes: async (filmTitle, year, action) => {
+      const filmId = `${(filmTitle||'').replace(/[^a-z0-9]/gi,'_')}_${year||''}`;
+      const ref = doc(db, "films", filmId);
+      try {
+        const snap = await getDoc(ref);
+        if (!snap.exists()) {
+          await setDoc(ref, { title: filmTitle, year, likes: 0, dislikes: 0 });
+        }
+        const updateObj = {};
+        if (action === 'like') updateObj.likes = increment(1);
+        else if (action === 'dislike') updateObj.dislikes = increment(1);
+        else if (action === 'like-remove') updateObj.likes = increment(-1);
+        else if (action === 'dislike-remove') updateObj.dislikes = increment(-1);
+        await updateDoc(ref, updateObj);
+      } catch (e) {
+        console.error("Firebase update error:", e);
+      }
+    },
+
+    subscribeCounts: (filmTitle, year, cb) => {
+      const filmId = `${(filmTitle||'').replace(/[^a-z0-9]/gi,'_')}_${year||''}`;
+      const ref = doc(db, "films", filmId);
+      // ensure doc exists
+      getDoc(ref).then(snap => {
+        if (!snap.exists()) setDoc(ref, { title: filmTitle, year, likes: 0, dislikes: 0 });
+      }).catch(()=>{});
+      return onSnapshot(ref, snap => {
+        const d = snap.data() || { likes: 0, dislikes: 0 };
+        cb((d.likes||0), (d.dislikes||0));
+      }, err => console.error("Firebase subscribe error:", err));
+    }
+  };
+</script>
+</body>
+</html>
