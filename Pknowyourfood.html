@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinoy Know Your Food</title>
+
+<style>
+:root {
+  --bg: url('image4/cloud.jpg') center / cover no-repeat;
+  --card-image: url('image4/menubox.svg');
+  --button-bg: #ffffff;
+  --text: #1e1e1e;
+  --accent: #c0392b;
+
+  --card-w: 320px;
+  --card-h: 460px;
+
+  --card-top: 110px;
+  --card-left: 40px;
+  --card-right: 40px;
+  --card-bottom: 120px;
+}
+
+body.dark {
+  --bg: #1b1b1b;
+  --button-bg: #2a2a2a;
+  --text: #eaeaea;
+  --accent: #f39c12;
+}
+
+* { box-sizing: border-box; font-family: system-ui, sans-serif; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+header { text-align: center; padding: 60px 20px 30px; }
+.logo { max-width: 780px; width: 100%; margin: -15px auto 30px; display: block; }
+
+.controls {
+  max-width: 1100px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+}
+.controls input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+}
+.filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+select, button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+button { background: var(--button-bg); }
+button.accent { background: var(--accent); color: #fff; }
+
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+  gap: 16px;
+  justify-items: center;
+}
+
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  cursor: pointer;
+  transition: transform .25s;
+}
+.card:hover { transform: translateY(-6px); }
+
+.dark-toggle {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+.modal-backdrop[hidden] { display: none; }
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+.modal {
+  width: 850px;
+  max-width: 95vw;
+  height: 600px;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+}
+body.dark .modal { background: #2a2a2a; color: var(--text); }
+
+.modal header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 20px 0;
+  margin-left: -50px;
+  z-index: 0; 
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.tab {
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  background: var(--button-bg);
+  font-weight: 500;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tab-panel { padding: 16px 20px; }
+.tab-panel[hidden] { display: none; }
+
+.slides-wrapper {
+  position: relative;
+  min-height: 420px;
+}
+.slide {
+  position: relative; /* Changed from absolute to relative */
+  display: none; /* Hide by default */
+  line-height: 1.7;
+  color: #1a1200;
+  background: none;
+  padding: 0 10px 0 0;
+  font-size: 1.13rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  text-align: left;
+  white-space: pre-line;
+  max-width: 95%;
+  overflow-x: hidden;    /* prevent horizontal scroll */
+}
+.slide.active {
+  display: block; /* Show active slide */
+  padding-bottom: 30px;
+}
+.slide strong {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: -20px; /* was 10px, now 4px for less space */
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  color: #222;
+  text-shadow: 0 1px 0 #fffbe7;
+  margin-top: 30px; /* was 30px, now 10px for less space */
+}
+
+.ppt-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  /* Add a subtle dot grid background for a paper-like effect */
+  background-image:
+    radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+}
+.ppt-modal[style*="display: flex"] { display: flex !important; }
+.ppt-container {
+  width: 750px;
+  height: 500px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  position: relative;
+  transform: none;
+  opacity: 1;
+  animation: none;
+  color: #2d1a00;
+  min-height: unset;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ppt-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* All modal content must be positioned absolutely relative to the SVG background, not flex or flow layout! */
+.ppt-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 85%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  left: auto;
+  right: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  left: 0;
+}
+
+/* INNER SAFE AREA BASED ON SVG ART */
+.ppt-safe {
+  position: absolute;
+  left: 20%;    /* move a bit less right */
+  top: 12%;     /* slightly less top padding */
+  width: 76%;   /* slightly wider */
+  height: 76%;  /* slightly taller */
+  /* outline: 2px dashed red;  Uncomment for debugging */
+}
+
+.ppt-header {
+  position: relative;
+  width: 100%;
+  height: 22%;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.ppt-food-img {
+  width: 500px;
+      height: 500px;
+  min-width: 350px;
+  min-height: 250px;
+  object-fit: cover;
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  display: block;
+  margin-left: -120px;
+}
+
+.ppt-title-block {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.ppt-title {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-size: 2.6rem;
+  margin: 0 0 2px 0; /* was 10px, now 2px for less space */
+  background: none;
+  display: block;
+  border-radius: 0 18px 8px 0;
+  color: #222;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-left: -25px;
+}
+
+.ppt-subtitle {
+  font-size: 1.18rem;
+  margin: 0 0 0 2px;
+  color: #444;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-weight: normal;
+  opacity: 0.85;
+  line-height: 1.1;
+}
+
+.ppt-slides {
+  position: relative;
+  width: 100%;
+  height: 55%;
+  margin-top: 2%;
+  background: none;
+  display: block;
+  z-index: 2;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #e0cfa3 #fffbe7;
+}
+
+/* Hide scrollbar by default, show on hover/focus (Webkit browsers) */
+.ppt-slides::-webkit-scrollbar {
+  width: 8px;
+  background: #fffbe7;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: none;
+}
+.ppt-slides:hover::-webkit-scrollbar,
+.ppt-slides:focus-within::-webkit-scrollbar {
+  display: block;
+  opacity: 1;
+}
+
+/* Thumb style */
+.ppt-slides::-webkit-scrollbar-thumb {
+  background: #e0cfa3;
+  border-radius: 8px;
+}
+.ppt-slides::-webkit-scrollbar-thumb:hover {
+  background: #c8b27a;
+}
+
+/* For Firefox: hide by default, show on hover/focus */
+.ppt-slides {
+  scrollbar-width: none;
+}
+.ppt-slides:hover,
+.ppt-slides:focus-within {
+  scrollbar-width: thin;
+}
+
+.slide {
+  position: relative; /* Changed from absolute to relative */
+  display: none; /* Hide by default */
+  line-height: 1.7;
+  color: #1a1200;
+  background: none;
+  padding: 0 10px 0 0;
+  font-size: 1.13rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  text-align: left;
+  white-space: pre-line;
+  max-width: 95%;
+  overflow-x: hidden;    /* prevent horizontal scroll */
+}
+.slide.active {
+  display: block; /* Show active slide */
+  padding-bottom: 30px;
+}
+.slide strong {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: -20px; /* was 10px, now 4px for less space */
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  color: #222;
+  text-shadow: 0 1px 0 #fffbe7;
+  margin-top: 30px; /* was 30px, now 10px for less space */
+}
+
+.ppt-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  /* Add a subtle dot grid background for a paper-like effect */
+  background-image:
+    radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+}
+.ppt-modal[style*="display: flex"] { display: flex !important; }
+.ppt-container {
+  width: 750px;
+  height: 500px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  position: relative;
+  transform: none;
+  opacity: 1;
+  animation: none;
+  color: #2d1a00;
+  min-height: unset;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ppt-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* All modal content must be positioned absolutely relative to the SVG background, not flex or flow layout! */
+.ppt-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 85%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  left: auto;
+  right: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  left: 0;
+}
+
+/* INNER SAFE AREA BASED ON SVG ART */
+.ppt-safe {
+  position: absolute;
+  left: 20%;    /* move a bit less right */
+  top: 12%;     /* slightly less top padding */
+  width: 76%;   /* slightly wider */
+  height: 76%;  /* slightly taller */
+  /* outline: 2px dashed red;  Uncomment for debugging */
+}
+
+.ppt-header {
+  position: relative;
+  width: 100%;
+  height: 22%;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.ppt-food-img {
+  width: 300px;
+  height: 200px;
+  max-width: 300px;
+  max-height: 200px;
+  min-width: 300px;
+  min-height: 200px;
+  object-fit: contain;
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  display: block;
+  margin-left: -120px;
+}
+
+.ppt-title-block {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.ppt-title {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-size: 2.6rem;
+  margin: 0 0 2px 0; /* was 10px, now 2px for less space */
+  background: none;
+  display: block;
+  border-radius: 0 18px 8px 0;
+  color: #222;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-left: -25px;
+}
+
+.ppt-subtitle {
+  font-size: 1.18rem;
+  margin: 0 0 0 2px;
+  color: #444;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-weight: normal;
+  opacity: 0.85;
+  line-height: 1.1;
+}
+
+.ppt-slides {
+  position: relative;
+  width: 100%;
+  height: 55%;
+  margin-top: 2%;
+  background: none;
+  display: block;
+  z-index: 2;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #e0cfa3 #fffbe7;
+}
+
+/* Hide scrollbar by default, show on hover/focus (Webkit browsers) */
+.ppt-slides::-webkit-scrollbar {
+  width: 8px;
+  background: #fffbe7;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: none;
+}
+.ppt-slides:hover::-webkit-scrollbar,
+.ppt-slides:focus-within::-webkit-scrollbar {
+  display: block;
+  opacity: 1;
+}
+
+/* Thumb style */
+.ppt-slides::-webkit-scrollbar-thumb {
+  background: #e0cfa3;
+  border-radius: 8px;
+}
+.ppt-slides::-webkit-scrollbar-thumb:hover {
+  background: #c8b27a;
+}
+
+/* For Firefox: hide by default, show on hover/focus */
+.ppt-slides {
+  scrollbar-width: none;
+}
+.ppt-slides:hover,
+.ppt-slides:focus-within {
+  scrollbar-width: thin;
+}
+
+.slide {
+  position: relative; /* Changed from absolute to relative */
+  display: none; /* Hide by default */
+  line-height: 1.7;
+  color: #1a1200;
+  background: none;
+  padding: 0 10px 0 0;
+  font-size: 1.13rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  text-align: left;
+  white-space: pre-line;
+  max-width: 95%;
+  overflow-x: hidden;    /* prevent horizontal scroll */
+}
+.slide.active {
+  display: block; /* Show active slide */
+  padding-bottom: 30px;
+}
+.slide strong {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: -20px; /* was 10px, now 4px for less space */
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  color: #222;
+  text-shadow: 0 1px 0 #fffbe7;
+  margin-top: 30px; /* was 30px, now 10px for less space */
+}
+
+.ppt-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  z-index: 2;
+  background: none;
+}
+
+.ppt-controls button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #f7e7b4;
+  color: #5b3a0a;
+  font-size: 1.1rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-weight: bold;
+  box-shadow: 1px 1px 0 #e0cfa3;
+  transition: background 0.2s;
+}
+.ppt-controls button:hover {
+  background: #ffe9a7;
+}
+
+#slideIndicator {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-size: 1.1rem;
+  color: #7a5a1a;
+  font-weight: bold;
+}
+
+.ppt-close {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #b88b1a;
+  background: #fffbe7;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e0cfa3;
+  box-shadow: 1px 1px 0 #e0cfa3;
+  z-index: 3;
+  transition: background 0.2s;
+}
+.ppt-close:hover {
+  background: #ffe9a7;
+}
+
+/* Hide the old ppt-header image */
+#pptImage {
+  display: none;
+}
+
+.index-logo-link {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 120;
+  display: block;
+}
+.index-logo-link .main-logo {
+  max-width: 120px;
+  width: 100%;
+  margin: 0;
+  transition: transform .2s;
+}
+.index-logo-link:hover .main-logo {
+  transform: scale(1.08);
+}
+
+.highlighted-term {
+  color: #c0392b;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline; /* Change to inline for normal text selection */
+  font-weight: 500;
+  outline: none;
+  position: relative;
+}
+.highlighted-term:active,
+.highlighted-term:focus {
+  color: #c24a3c;
+  border-color: #ffe9a7;
+}
+.highlighted-term:hover {
+  color: #602019;
+  z-index: 2;
+}
+
+#pptVideoEmbed video,
+#pptVideoEmbed iframe {
+  width: 95%;
+  height: 270px;
+  max-width: 95%;
+  max-height: 270px;
+  border-radius: 16px;
+  background: #000;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+#pptVideoControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+#pptVideoControls button {
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #f7e7b4;
+  color: #5b3a0a;
+  font-size: 1.05rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-weight: bold;
+  box-shadow: 1px 1px 0 #e0cfa3;
+  transition: background 0.2s;
+}
+#pptVideoControls button:hover {
+  background: #ffe9a7;
+}
+#videoIndicator {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, system-ui, sans-serif;
+  font-size: 1.05rem;
+  color: #7a5a1a;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<a href="index.html" class="index-logo-link" aria-label="Back to Index">
+  <img src="image/logo2.svg" alt="Back to Index" class="main-logo">
+</a>
+
+<button class="dark-toggle" onclick="toggleDark()">Dark Mode</button>
+
+<header>
+  
+  <img class="logo" src="image/food.svg" alt="Pinoy Know Your Food">
+</header>
+
+<section class="controls">
+  <input id="search" placeholder="Search food..." oninput="filterFood()">
+  <div class="filter-row">
+    <select id="category" onchange="filterFood()">
+      <option value="">All Categories</option>
+      <option value="Street Food">Street Food</option>
+      <option value="Dessert">Dessert</option>
+      <option value="Dish">Dish</option>
+    </select>
+    <button onclick="clearFilters()">Clear</button>
+    <button class="accent" onclick="shuffleFood()">Shuffle</button>
+  </div>
+</section>
+
+<section id="foodGrid" class="grid"></section>
+
+<!-- PowerPoint-like Modal Presentation -->
+<div id="pptModal" class="ppt-modal" style="display:none;">
+  <div class="ppt-container">
+    <img src="image4/PPTCONTAINER.svg" class="ppt-bg-svg" alt="PPT Background">
+    <div class="ppt-content">
+      <!-- Move tabs inside ppt_content, before close button -->
+      <div class="tabs" id="pptTabs" style="position:absolute;top:0;left:0;width:100%;z-index:-10 ;justify-content:flex-end;pointer-events:auto;">
+        <div class="tab active" data-tab="slides" onclick="showPptTab(event, 'slides')">Slides</div>
+        <div class="tab" data-tab="video" onclick="showPptTab(event, 'video')">Video</div>
+      </div>
+      <span class="ppt-close" onclick="closePptModal()">✕</span>
+      <div class="ppt-safe">
+        <div class="ppt-header">
+          <img id="pptFoodImg" class="ppt-food-img" alt="Food">
+          <div class="ppt-title-block">
+            <div class="ppt-title" id="pptTitle"></div>
+            <div class="ppt-subtitle" id="pptOrigin"></div>
+          </div>
+        </div>
+        <div class="ppt-slides tab-panel" id="pptSlidesPanel">
+          <div class="slide active"></div>
+          <div class="slide"></div>
+          <div class="slide"></div>
+          <div class="slide"></div>
+        </div>
+        <div class="tab-panel" id="pptVideoPanel" hidden>
+          <div id="pptVideoEmbed" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+            <!-- Video player will be injected here -->
+          </div>
+          <div id="pptVideoControls">
+            <button onclick="pptPrevVideo()">&#x25C0; Prev</button>
+            <span id="videoIndicator"></span>
+            <button onclick="pptNextVideo()">Next &#x25B6;</button>
+          </div>
+        </div>
+        <div class="ppt-controls" id="pptSlidesControls">
+          <button onclick="pptPrevSlide()">&#x25C0; Prev</button>
+          <span id="slideIndicator"></span>
+          <button onclick="pptNextSlide()">Next &#x25B6;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const foods = [
+  {
+    name: "Kwek-Kwek",
+    origin: "Philippines",
+    category: "Street Food",
+    description: "A popular Filipino street food made of battered quail eggs.",
+    history: "Kwek-Kwek originated as a creative way to serve quail eggs in the Philippines, becoming a staple in street food markets.",
+    cultural: "Kwek-Kwek is a symbol of Filipino street food culture, often enjoyed as a snack during gatherings and festivals.",
+    recipe: "1. Boil quail eggs.\n2. Coat in orange batter.\n3. Deep fry until crispy.\n4. Serve with vinegar or sweet sauce.",
+    image: "image4/kwek.png",
+    modalImage: "image4/kwek.svg",
+    // Use only links for modalVideos
+    modalVideos: [
+      "https://www.youtube.com/watch?v=5PjVjNTLOhQ",
+      "https://www.youtube.com/watch?v=xoLPVGgGCF0"
+
+    ]
+  },
+  {
+    name: "Halo-Halo",
+    origin: "Philippines",
+    category: "Dessert",
+    description: "A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.",
+    history: "Halo-Halo evolved from Japanese kakigori and Spanish-influenced sweets, becoming a Filipino summer staple.",
+    cultural: "Halo-Halo is a symbol of Filipino ingenuity, mixing various ingredients to create a unique, refreshing treat.",
+    recipe: "1. Layer sweetened beans, fruits, and jellies.\n2. Add shaved ice.\n3. Top with leche flan, ube, and evaporated milk.",
+    image: "image4/halo.svg",
+    modalImage: "image4/halohalo.png",
+    modalVideo: "image4/videos/halo-halo.mp4",
+    highlights: [
+      { term: "kakigori", url: "https://en.wikipedia.org/wiki/Halo-halo?utm_source=chatgpt.com" },
+    ],
+    modalVideos: [
+      "https://www.youtube.com/watch?v=5PjVjNTLOhQ",
+      "https://www.youtube.com/watch?v=xoLPVGgGCF0"
+    ]
+  },
+  {
+    name: "Siniggang",
+    origin: "Philippines",
+    category: "Dish",
+    description: "A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.A famous Filipino shaved ice dessert.",
+    history: "Halo-Halo evolved from Japanese kakigori and Spanish-influenced sweets, becoming a Filipino summer staple.",
+    cultural: "Halo-Halo is a symbol of Filipino ingenuity, mixing various ingredients to create a unique, refreshing treat.",
+    recipe: "1. Layer sweetened beans, fruits, and jellies.\n2. Add shaved ice.\n3. Top with leche flan, ube, and evaporated milk.",
+    image: "image4/sinigang.png",
+    modalImage: "image4/sinigeng.png",
+    modalVideo: "image4/videos/halo-halo.mp4",
+    highlights: [
+      { term: "kakigori", url: "https://en.wikipedia.org/wiki/Halo-halo?utm_source=chatgpt.com" },
+    ]
+  },
+  {
+    name: "",
+    origin: "",
+    category: "",
+    description: "",
+    history: "",
+    cultural: "",
+    recipe: "",
+    image: "",
+    modalImage: "",
+    modalVideo: "",
+    highlights: [
+      { term: "", url: "" },
+    ]
+  },
+  {
+    name: "",
+    origin: "",
+    category: "",
+    description: "",
+    history: "",
+    cultural: "",
+    recipe: "",
+    image: "",
+    modalImage: "",
+    modalVideo: "",
+    highlights: [
+      { term: "", url: "" },
+    ]
+  },
+  {
+    name: "",
+    origin: "",
+    category: "",
+    description: "",
+    history: "",
+    cultural: "",
+    recipe: "",
+    image: "",
+    modalImage: "",
+    modalVideo: "",
+    highlights: [
+      { term: "", url: "" },
+    ]
+  }
+];
+
+let currentList = [...foods]; // Always keep a copy for shuffling
+
+function render(list) {
+  const grid = document.getElementById("foodGrid");
+  grid.innerHTML = list.map((f,i)=>`
+    <img class="card" data-index="${i}" src="${f.image}" alt="${f.name}">
+  `).join("");
+  currentList = list; // Keep currentList in sync
+}
+
+function filterFood() {
+  const search = document.getElementById("search");
+  const q = search.value.toLowerCase();
+  const category = document.getElementById("category").value;
+  let filtered = foods.filter(f => (f.name || "").toLowerCase().includes(q));
+  if (category) {
+    filtered = filtered.filter(f =>
+      typeof f.category === "string" && f.category.toLowerCase() === category.toLowerCase()
+    );
+  }
+  render(filtered);
+}
+
+function clearFilters() {
+  document.getElementById("search").value = "";
+  document.getElementById("category").value = "";
+  render(foods);
+}
+
+function shuffleFood() {
+  const shuffled = [...currentList].sort(()=>Math.random()-0.5);
+  render(shuffled);
+}
+
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+let pptCurrentSlide = 0;
+let pptSlides = [];
+const pptLabels = [
+  "Description",
+  "History",
+  "Cultural Significance",
+  "Recipe"
+];
+function highlightTerms(text, highlights) {
+  if (!highlights || !Array.isArray(highlights)) return text;
+  // Only highlight in plain text, not inside HTML tags
+  // Split by tags, only process text nodes
+  return text.split(/(<[^>]+>)/g).map(segment => {
+    if (segment.startsWith('<')) return segment; // leave tags untouched
+    let s = segment;
+    highlights
+      .sort((a, b) => b.term.length - a.term.length)
+      .forEach(({ term, url }) => {
+        const regex = new RegExp(`\\b${escapeRegExp(term)}\\b`, 'gi');
+        s = s.replace(regex, `<a href="${url}" class="highlighted-term" target="_blank" rel="noopener noreferrer">$&</a>`);
+      });
+    return s;
+  }).join('');
+}
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function openPptModal(food) {
+  document.getElementById("pptModal").style.display = "flex";
+  document.querySelector("#pptModal .ppt-container").style.opacity = "1";
+  document.getElementById("pptTitle").textContent = food.name || "";
+  document.getElementById("pptOrigin").textContent = food.category ? food.category : "Street Food";
+  document.getElementById("pptFoodImg").src = food.modalImage || food.image || "";
+  pptSlides = [
+    food.description || "",
+    food.history || "",
+    food.cultural || "",
+    food.recipe || ""
+  ];
+  const slideEls = document.querySelectorAll("#pptModal .slide");
+  for (let i = 0; i < slideEls.length; ++i) {
+    if (!pptSlides[i]) {
+      slideEls[i].innerHTML = "";
+      continue;
+    }
+    let content = pptSlides[i];
+    if (food.highlights && (i === 0 || i === 1 || i === 2 || i === 3)) {
+      content = highlightTerms(content, food.highlights);
+    }
+    if (i === 3) {
+      slideEls[i].innerHTML = `<strong>${pptLabels[i]}:</strong><br>${content.replace(/\n/g, "<br>")}`;
+    } else {
+      slideEls[i].innerHTML = `<strong>${pptLabels[i]}:</strong><br>${content}`;
+    }
+  }
+  pptShowSlide(0);
+
+  // Video tab: support multiple videos
+  pptVideos = Array.isArray(food.modalVideos) && food.modalVideos.length
+    ? food.modalVideos
+    : [];
+  pptCurrentVideo = 0;
+  showPptTab(null, 'slides');
+  renderPptVideo();
+  document.getElementById('pptVideoControls').style.display = pptVideos.length > 1 ? 'flex' : 'none';
+}
+
+function renderPptVideo() {
+  const videoEmbed = document.getElementById('pptVideoEmbed');
+  videoEmbed.innerHTML = '';
+  if (!pptVideos.length) {
+    videoEmbed.innerHTML = `<div style="color:#888;text-align:center;width:100%;">No video available.</div>`;
+    document.getElementById('videoIndicator').textContent = '';
+    return;
+  }
+  const link = pptVideos[pptCurrentVideo];
+  // Show video player for YouTube links, else show link
+  if (/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/.test(link)) {
+    const match = link.match(/v=([a-zA-Z0-9_-]+)/);
+    const youtubeId = match ? match[1] : "";
+    videoEmbed.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}" frameborder="0" allowfullscreen></iframe>`;
+  } else if (/vimeo\.com\/(\d+)/.test(link)) {
+    const match = link.match(/vimeo\.com\/(\d+)/);
+    const vimeoId = match ? match[1] : "";
+    videoEmbed.innerHTML = `<iframe src="https://player.vimeo.com/video/${vimeoId}" frameborder="0" allowfullscreen></iframe>`;
+  } else {
+    videoEmbed.innerHTML = `<a href="${link}" target="_blank" style="font-size:1.2rem;color:#c0392b;text-decoration:underline;">Watch Video</a>`;
+  }
+  document.getElementById('videoIndicator').textContent = `${pptCurrentVideo + 1} / ${pptVideos.length}`;
+}
+
+function closePptModal() {
+  document.getElementById("pptModal").style.display = "none";
+}
+function pptShowSlide(idx) {
+  const slides = document.querySelectorAll("#pptModal .slide");
+  slides.forEach((s, i) => {
+    if (i === idx) {
+      s.classList.add("active");
+      s.style.display = "block";
+    } else {
+      s.classList.remove("active");
+      s.style.display = "none";
+    }
+  });
+  document.getElementById("slideIndicator").textContent = `${idx + 1} / ${slides.length}`;
+  pptCurrentSlide = idx;
+}
+function pptNextSlide() {
+  const slides = document.querySelectorAll("#pptModal .slide");
+  if (slides.length === 0) return;
+  // Wrap around to first slide if at the end
+  pptShowSlide((pptCurrentSlide + 1) % slides.length);
+}
+function pptPrevSlide() {
+  const slides = document.querySelectorAll("#pptModal .slide");
+  if (slides.length === 0) return;
+  // Wrap around to last slide if at the beginning
+  pptShowSlide((pptCurrentSlide - 1 + slides.length) % slides.length);
+}
+
+let pptCurrentVideo = 0;
+let pptVideos = [];
+
+function pptNextVideo() {
+  if (!pptVideos.length) return;
+  pptCurrentVideo = (pptCurrentVideo + 1) % pptVideos.length;
+  renderPptVideo();
+}
+function pptPrevVideo() {
+  if (!pptVideos.length) return;
+  pptCurrentVideo = (pptCurrentVideo - 1 + pptVideos.length) % pptVideos.length;
+  renderPptVideo();
+}
+
+// Add click-outside-to-close for pptModal (now closes only if clicking outside ppt-container)
+document.getElementById("pptModal").addEventListener("mousedown", function(e) {
+  // If clicking a highlighted-term link, do nothing (let the link work)
+  if (e.target.closest('.highlighted-term')) return;
+  const pptContainer = document.querySelector("#pptModal .ppt-container");
+  if (e.target === this || (!pptContainer.contains(e.target) && this.contains(e.target))) {
+    closePptModal();
+  }
+});
+
+document.getElementById("foodGrid").addEventListener("click", e => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  openPptModal(currentList[card.dataset.index]);
+});
+
+render(foods);
+
+// Tab switching logic for modal
+function showPptTab(e, tab) {
+  // Prevent default if event is passed (for button clicks)
+  if (e) e.preventDefault && e.preventDefault();
+  // Tabs
+  document.querySelectorAll('#pptTabs .tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === tab);
+  });
+  // Panels
+  document.getElementById('pptSlidesPanel').hidden = tab !== 'slides';
+  document.getElementById('pptVideoPanel').hidden = tab !== 'video';
+  // Controls
+  document.getElementById('pptSlidesControls').style.display = (tab === 'slides') ? '' : 'none';
+  document.getElementById('pptVideoControls').style.display =
+    (tab === 'video' && pptVideos.length > 1) ? 'flex' : 'none';
+}
+</script>
+</body>
+</html>
