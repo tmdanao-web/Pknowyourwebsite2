@@ -1,29 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7972235990531363"
-     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinoy Know Your Website</title>
 
-    <meta charset="UTF-8">
-    <title>Pinoy Know Your Website</title>
-
-   <style>
-   
-
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:url("image/philippines.jpg") no-repeat center center fixed;
-    background-size:cover;
-    color:white;
-    text-align:center;
-    position: relative;
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("image/philippines.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
 }
 
-.container{
-    padding:40px 24px;
+.container {
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.main-logo {
+  max-width: 700px;
+  width: 100%;
+  margin: -30px auto 0;
+  transition: transform .2s ease;
+}
+.main-logo:hover { transform: scale(1.05); }
+
+@font-face {
+  font-family: 'Bangers';
+  src: url('image4/Bangers-YPnj.ttf') format('truetype');
+}
+
+h1 {
+  font-family: 'Bangers', Arial, sans-serif;
+  margin-top:-25px;
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:32px;
+  font-weight:500;
+  letter-spacing:0.4px;
+  text-transform:uppercase;
+  line-height:1.5;
+  text-shadow:
+    -2px -2px 0 #222,
+    2px -2px 0 #222,
+    -2px 2px 0 #222,
+    2px 2px 0 #222,
+    2px 0px 0 #222,
+    0px 2px 0 #222,
+    -2px 0px 0 #222,
+    0px -2px 0 #222,
+    2px 2px 5px rgba(0,0,0,.7);
+}
+
+
+.cards {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+/* Remove card frames (no background, border radius, or shadow) */
+.card {
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 16 / 9;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  transition: transform .2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card:hover {
+  transform: scale(1.06);
+  background: none;
+  color: #5b3535;
+}
+
+.card a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add x/y adjustment for each card image using CSS variables */
+.card-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: 150%;
+  transform: translate(
+    calc(-50% + var(--img-x, 0px)),
+    calc(-50% + var(--img-y, 0px))
+  );
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(.4,1.4,.6,1);
+}
+
+@media (max-width: 600px) {
+  .cards { gap: 20px; }
+  .card { aspect-ratio: 3 / 2; }
 }
 
 /* AUTHOR SECTION - top right corner */
@@ -43,7 +132,7 @@ body{
   border: 1px solid rgba(255,255,255,0.1);
 }
 
-.author-inline .author-photo {
+.author-photo {
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -81,127 +170,10 @@ body{
   color: #90caf9;
   text-decoration: underline;
 }
-
-/* MAIN LOGO (no frame) */
-.main-logo{
-  display:block;
-  width:100%;
-  max-width: 700px; /* adjust as needed */
-  height:auto;
-  margin: 0 auto; /* center */
-  transition: transform 180ms ease, filter 180ms ease; /* added */
-  will-change: transform, filter; /* added */
-  
-}
-.main-logo:hover,
-.main-logo:focus-visible {
-  transform: scale(1.06) translateY(-2px);
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35)) brightness(1.05);
-}
-.main-logo:active { transform: scale(0.98); } /* tap feedback */
-
-@media (prefers-reduced-motion: reduce) {
-  .main-logo { transition: none; }
-}
-
-/* TAGLINE */
-h1{
-    margin-top:22px;
-    max-width:900px;
-    margin-left:auto;
-    margin-right:auto;
-    font-size:17px;
-    font-weight:700;
-    letter-spacing:0.4px;
-    text-transform:uppercase;
-    line-height:1.5;
-    text-shadow: 2px 2px 5px rgba(0,0,0,.7);
-}
-
-/* CARDS LAYOUT */
-.cards{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
-}
-
-/* CARD STYLE */
-.card{
-    width:320px;
-    height:180px;
-    background:rgba(255,255,255,0.28);
-    border-radius:20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    /* cursor:pointer;  <-- remove so only link shows pointer */
-    transition:0.3s;
-    text-decoration:none;
-}
-
-/* Make only the inner link clickable */
-.card-link{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;            /* optional: enlarge click target around logo */
-  border-radius: 12px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Hover effect only when the link (logo area) is hovered/focused */
-.card:has(.card-link:hover),
-.card:has(.card-link:focus-visible){
-  background:rgba(255,255,255,0.4);
-  transform:scale(1.05);
-}
-
-/* Uniform logo sizes with per-image overrides + offsets */
-.card-img {
-  width: var(--logo-w, 220px);
-  height: var(--logo-h, 120px);
-  max-width: none;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  transform: translate(var(--logo-x, 0px), var(--logo-y, 0px));
-}
-
-/* Mobile responsiveness (also overridable per image) */
-@media (max-width: 768px) {
-  .author-inline {
-    max-width: 240px;
-    top: 12px;
-    right: 12px;
-    padding: 10px 12px;
-  }
-  .author-inline .author-photo { width: 40px; height: 40px; }
-  .author-name { font-size: 12px; }
-  .author-bio { font-size: 10px; }
-
-  .card { width: 280px; height: 160px; }
-
-  .card-img {
-    width: var(--logo-w-sm, var(--logo-w, 200px));
-    height: var(--logo-h-sm, var(--logo-h, 110px));
-    transform: translate(
-      var(--logo-x-sm, var(--logo-x, 0px)),
-      var(--logo-y-sm, var(--logo-y, 0px))
-    );
-  }
-}
-   </style>
-
+</style>
 </head>
 
 <body>
-  <div class="fixed-canvas">
-
-<!-- AUTHOR SECTION - top right corner -->
 <div class="author-inline" aria-labelledby="authorName">
   <img src="./image/theo.jpg" alt="Theo Jan Joseph" class="author-photo" />
   <div class="author-info">
@@ -220,41 +192,38 @@ h1{
 </div>
 
 <div class="container">
+  <!-- Main Header Logo -->
+  <img src="image/logo2.svg" class="main-logo" alt="Website Logo">
 
-    <!-- Main Header Logo -->
-<img src="image/logo2.svg" class="main-logo" alt="Website Logo">
+  <h1>
+    A collection of everything Pinoy — trivia, culture, history, customs, and
+    the shared knowledge that defines the Filipino experience.
+  </h1>
 
-  <h1>A collection of everything Pinoy — trivia, culture, history, customs,  
-    and the shared knowledge that defines the    Filipino experience.</h1>
+  <div class="cards">
+    <div class="card">
+      <a href="Pknowyourmemes.html">
+        <img src="image/memeslogo.svg" class="card-img" alt="Memes" style="--img-x: -30px; --img-y: 0px;">
+      </a>
+    </div>
 
-   <div class="cards">
+    <div class="card">
+      <a href="Pknowyourfilms.html">
+        <img src="image/films.svg" class="card-img" alt="Films" style="--img-x: -30px; --img-y: 8px;">
+      </a>
+    </div>
 
-  <div class="card">
-    <a href="Pknowyourmemes.html" class="card-link">
-      <img src="image/memeslogo.svg" class="card-img" alt="Memes"
-           style="--logo-w: 450px; --logo-h: auto; --logo-x: 0px; --logo-y: -8px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: -6px;">
-    </a>
-  </div>
+    <div class="card">
+      <a href="Pknowyourreligion.html">
+        <img src="image/relihiyon.svg" class="card-img" alt="Religion" style="--img-x: 30px; --img-y: 12px;">
+      </a>
+    </div>
 
-  <div class="card">
-    <a href="Pknowyourfilms.html" class="card-link">
-      <img src="image/films.svg" class="card-img" alt="Films"
-           style="--logo-w: 550px; --logo-h: auto; --logo-x: -10px; --logo-y: 0px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: 0px;">
-    </a>
-  </div>
+    <div class="card">
+      <a href="Pknowyourfood.html">
+        <img src="image/food.svg" class="card-img" alt="Food" style="--img-x: 50px; --img-y: 15px;">
 
-<div class="card">
-    <a href="Pknowyourfilms.html" class="card-link">
-      <img src="image/relihiyon.svg" class="card-img" alt="Films"
-           style="--logo-w: 450px; --logo-h: auto; --logo-x: 0px; --logo-y: 15px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: -6px;">
-    </a>
-  </div>
-
-  <div class="card">
-    <a href="Pknowyourfilms.html" class="card-link">
-    <img src="image/food.svg" class="card-img" alt="Religion"
-           style="--logo-w: 450px; --logo-h: auto; --logo-x: -10px; --logo-y: 120px; --logo-w-sm: auto; --logo-h-sm: auto; --logo-x-sm: 0px; --logo-y-sm: 0px;" hotspot>
-    </a>
-  </div>
-
+      
 </div>
+</body>
+</html>

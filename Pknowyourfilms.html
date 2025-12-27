@@ -18,24 +18,21 @@
   font-family: "Inter", sans-serif;
 }
 
-body {
-  background-image: var(--bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 :root.dark {
-  --bg: #0c0c0c;
-  --text: #e6e6e6;
+  --bg: url("image/night.jpg");
+  --text: #c30000;
   --card-bg: #111;
   --accent: #8bc2ff;
 }
 
 body {
   margin: 0;
+  background: var(--bg);
   color: var(--text);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 header {
@@ -61,22 +58,21 @@ header {
 .logo{
   width: 100%;
   height: auto;
-  max-width: 950px;
+  max-width: 750px;
   object-fit: contain;
   display: block;
-  margin-bottom: -70px;
-  margin-top: -50px;
+  margin-bottom: -40px;
+  margin-top: 20px;
 }
 
 #searchBar {
   width: 100%;
-  max-width: 650px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 14px 18px;
   font-size: 16px;
-  cursor: pointer;
-  flex-shrink: 1;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+
 }
 
 #darkToggle {
@@ -86,6 +82,9 @@ header {
   cursor: pointer;
   flex-shrink: 0;
   white-space: nowrap;
+  position: fixed;
+  right: 20px;
+  top: 20px;
 }
 
 /* ===========================
@@ -97,7 +96,7 @@ header {
   justify-content: left;
   align-items: center;
   gap: 8px;
-  padding-left: 110px; /* safer for inner spacing */
+  padding-left: -200px; /* safer for inner spacing */
   width: 100%;
 }
 
@@ -163,6 +162,23 @@ header {
 #toggleViewBtn:hover {
   background:#abdcff;
   border-color:#14456b;
+}
+
+.index-logo-link {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 120;
+  display: block;
+}
+.index-logo-link .main-logo {
+  max-width: 120px;
+  width: 100%;
+  margin: 0;
+  transition: transform .2s;
+}
+.index-logo-link:hover .main-logo {
+  transform: scale(1.08);
 }
 
 /* ===========================
@@ -927,11 +943,11 @@ header {
 </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
+  <a href="index.html" class="index-logo-link" aria-label="Back to Index">
+    <img src="image/logo2.svg" class="main-logo" alt="Website Logo">
+  </a>
 
-<!-- ===========================
-     HEADER + SEARCH
-     =========================== -->
 <header>
   <div class="fixed-canvas">
     <div class="wrap" id="app">
